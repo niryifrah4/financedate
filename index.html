@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>דייט פיננסי — זה אף פעם לא רק כסף</title>
+  <meta name="description" content="60 קלפי שיחה, בקבוק יין, פלייליסט מודרך וצידה לדרך. ערב אחד שמשנה את הדינמיקה הכלכלית בבית. ניר יפרח CFP.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════
+       BRAND TOKENS — Nature Distilled palette
+       ═══════════════════════════════════════════════ */
+    :root {
+      /* Forest + Cream — warm dominant palette */
+      --forest:       #1F4D2D;   /* ירוק יער עמוק — צבע ראשי לטקסט וכותרות */
+      --forest-deep:  #163823;
+      --forest-soft:  #B5C6B8;
+      --forest-mist:  #DDE6DE;
+
+      --sage:         #7A8854;   /* סייג למבטא וכפתורים משניים */
+      --sage-deep:    #1F4D2D;   /* יישור עם הירוק העמוק */
+      --sage-soft:    #C8D2B3;
+      --sage-mist:    #E5EAD8;
+
+      --tan:          #C5B095;
+      --tan-deep:     #A99479;
+      --tan-soft:     #E2D4BD;
+      --tan-mist:     #ECE0CB;
+
+      --blue:         #A0AEBA;
+      --blue-deep:    #7A8B98;
+      --blue-soft:    #D4DBE0;
+      --blue-mist:    #E8ECEF;
+
+      --cream:        #FBF7EE;   /* קרמי-לבן — רקע ראשי */
+      --cream-2:      #F4EDDB;   /* קרם נגיש לסקשנים מודגשים */
+      --paper:        #FFFFFF;
+
+      --ink:          #1F4D2D;   /* ירוק יער ככהה ראשי — הקסם של הצבעוניות */
+      --ink-mid:      #4A6650;
+      --ink-soft:     #788A7C;
+      --ink-faint:    #A8B5A9;
+      --line:         #D8CBB1;
+
+      --shadow-soft:  0 2px 12px rgba(45, 42, 34, 0.04);
+      --shadow-card:  0 8px 32px rgba(45, 42, 34, 0.06);
+      --shadow-lift:  0 16px 48px rgba(45, 42, 34, 0.10);
+      --shadow-deep:  0 32px 80px rgba(45, 42, 34, 0.18);
+
+      --radius-sm:    12px;
+      --radius:       20px;
+      --radius-lg:    28px;
+      --radius-pill:  100px;
+
+      --max:          1180px;
+      --max-narrow:   780px;
+
+      --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+      --dur:          240ms;
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESET + BASE
+       ═══════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Heebo', -apple-system, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+    img, svg { display: block; max-width: 100%; }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .narrow { max-width: var(--max-narrow); margin: 0 auto; padding: 0 24px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--sage-deep);
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1.5px;
+      background: var(--tan-deep);
+    }
+
+    h1, h2, h3 {
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+
+    /* ═══════════════════════════════════════════════
+       BUTTONS
+       ═══════════════════════════════════════════════ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 36px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      font-size: 17px;
+      cursor: pointer;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .btn:focus-visible {
+      outline: 3px solid var(--sage-deep);
+      outline-offset: 3px;
+    }
+    .btn-primary {
+      background: var(--sage);
+      color: var(--paper);
+      box-shadow: 0 8px 24px rgba(122, 136, 84, 0.30);
+    }
+    .btn-primary:hover {
+      background: var(--sage-deep);
+      box-shadow: 0 12px 32px rgba(122, 136, 84, 0.40);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+    }
+    .btn-ghost:hover {
+      background: var(--ink);
+      color: var(--cream);
+    }
+    .btn .arrow {
+      transition: transform var(--dur) var(--ease);
+    }
+    .btn:hover .arrow { transform: translateX(-4px); }
+
+    /* ═══════════════════════════════════════════════
+       NAV
+       ═══════════════════════════════════════════════ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 242, 232, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--ink);
+    }
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--sage);
+      border-radius: 50%;
+      position: relative;
+    }
+    .brand-mark::after {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      background: var(--tan);
+      border-radius: 50%;
+    }
+    .nav-cta {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 11px 22px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 14px;
+      transition: background var(--dur) var(--ease);
+      cursor: pointer;
+    }
+    .nav-cta:hover { background: var(--sage-deep); }
+    .nav-cta:focus-visible {
+      outline: 3px solid var(--sage);
+      outline-offset: 3px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════ */
+    .hero {
+      padding: 72px 0 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before, .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(60px);
+    }
+    .hero::before {
+      top: -160px;
+      right: -120px;
+      width: 480px;
+      height: 480px;
+      background: rgba(197, 176, 149, 0.30);
+    }
+    .hero::after {
+      bottom: -100px;
+      left: -120px;
+      width: 420px;
+      height: 420px;
+      background: rgba(160, 174, 186, 0.22);
+    }
+    .hero-inner { position: relative; z-index: 2; }
+
+    .launch-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 36px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--line);
+    }
+    .launch-pill::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--sage);
+      border-radius: 50%;
+    }
+
+    h1.hero-title {
+      font-size: clamp(2.4rem, 6.8vw, 6rem);
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 36px;
+      max-width: 14ch;
+      margin-inline: auto;
+    }
+    .hero-title .word {
+      position: relative;
+      color: var(--sage-deep);
+      display: inline-block;
+    }
+    .hero-title .word::after {
+      content: '';
+      position: absolute;
+      bottom: 6%;
+      left: -4px;
+      right: -4px;
+      height: 18%;
+      background: var(--tan);
+      opacity: 0.55;
+      z-index: -1;
+      border-radius: 4px;
+    }
+
+    /* HERO PROMISE — the items list + the BIG punchline */
+    .hero-promise {
+      max-width: 760px;
+      margin: 0 auto 44px;
+    }
+    .promise-items {
+      font-size: clamp(14px, 1.3vw, 16px);
+      font-weight: 600;
+      color: var(--ink-mid);
+      line-height: 1.4;
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+    .promise-items .sep {
+      color: var(--tan-deep);
+      font-weight: 400;
+      opacity: 0.6;
+    }
+    .promise-line {
+      font-size: clamp(20px, 2.6vw, 30px);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.3;
+      max-width: 720px;
+      margin: 0 auto;
+      letter-spacing: -0.015em;
+    }
+    .promise-line em {
+      font-style: normal;
+      position: relative;
+      display: inline-block;
+    }
+    .promise-line em::after {
+      content: '';
+      position: absolute;
+      bottom: 4%;
+      left: -3px;
+      right: -3px;
+      height: 22%;
+      background: var(--tan);
+      opacity: 0.45;
+      z-index: -1;
+      border-radius: 3px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .price-line {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--ink-mid);
+      margin-bottom: 6px;
+    }
+    .price-line strong {
+      color: var(--ink);
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .price-line s {
+      color: var(--ink-faint);
+      font-weight: 500;
+    }
+    .price-line .pill {
+      background: var(--tan-mist);
+      color: var(--sage-deep);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .shipping-note {
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-bottom: 56px;
+      font-weight: 500;
+      display: block;
+    }
+
+    /* Hero card stack — interactive deck */
+    .card-stack-wrap {
+      max-width: 380px;
+      margin: 32px auto 0;
+    }
+    .card-stack {
+      position: relative;
+      height: 280px;
+      width: 100%;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .preview-card {
+      position: absolute;
+      inset: 0;
+      background: var(--paper);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: right;
+      box-shadow: var(--shadow-card);
+      border-top: 5px solid var(--tan);
+      transition: transform 480ms var(--ease), box-shadow 360ms var(--ease), opacity 360ms var(--ease);
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+    }
+    .preview-card[data-color="sage"] { border-top-color: var(--sage); }
+    .preview-card[data-color="blue"] { border-top-color: var(--blue); }
+
+    .preview-card[data-position="active"] {
+      transform: rotate(-1.2deg) translateY(0);
+      z-index: 3;
+      opacity: 1;
+      box-shadow: var(--shadow-lift);
+    }
+    .preview-card[data-position="next"] {
+      transform: rotate(2.2deg) translateY(14px) scale(0.96);
+      z-index: 2;
+      opacity: 0.62;
+      box-shadow: var(--shadow-card);
+    }
+    .preview-card[data-position="far"] {
+      transform: rotate(-2.5deg) translateY(28px) scale(0.92);
+      z-index: 1;
+      opacity: 0.35;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-stack:hover [data-position="active"] {
+      transform: rotate(0) translateY(-4px);
+    }
+
+    .preview-tag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--tan-deep);
+      margin-bottom: 18px;
+    }
+    .preview-card[data-color="sage"] .preview-tag { color: var(--sage-deep); }
+    .preview-card[data-color="blue"] .preview-tag { color: var(--blue-deep); }
+    .preview-q {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.45;
+      min-height: 80px;
+    }
+    .preview-num {
+      position: absolute;
+      bottom: 28px;
+      right: 32px;
+      left: 32px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--ink-faint);
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+
+    /* Stack controls */
+    .stack-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .stack-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      color: var(--ink-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .stack-btn:hover {
+      background: var(--ink);
+      color: var(--cream);
+      border-color: var(--ink);
+    }
+    .stack-btn:focus-visible {
+      outline: 3px solid var(--sage);
+      outline-offset: 3px;
+    }
+    .stack-btn svg { width: 16px; height: 16px; }
+
+    .stack-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--line);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+    .dot:hover { background: var(--tan-deep); }
+    .dot.active {
+      background: var(--ink);
+      transform: scale(1.3);
+    }
+    .dot:focus-visible {
+      outline: 3px solid var(--sage);
+      outline-offset: 3px;
+    }
+
+    .stack-hint {
+      text-align: center;
+      font-size: 12px;
+      color: var(--ink-faint);
+      margin-top: 16px;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+
+    /* ═══════════════════════════════════════════════
+       ATTRIBUTION
+       ═══════════════════════════════════════════════ */
+    .attribution {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 24px 0;
+      text-align: center;
+    }
+    .attribution-text {
+      font-size: clamp(14px, 1.5vw, 16px);
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+    .attribution-text strong {
+      color: var(--tan);
+      font-weight: 800;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECTION GENERIC
+       ═══════════════════════════════════════════════ */
+    section.block { padding: 96px 0; }
+    /* Tinted class kept for HTML semantics, but visually unified for continuity */
+    section.block.tinted { background: transparent; }
+
+    h2.section-title {
+      font-size: clamp(2rem, 3.6vw, 3.2rem);
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .section-lead {
+      font-size: clamp(17px, 1.5vw, 19px);
+      color: var(--ink-mid);
+      line-height: 1.65;
+      max-width: 620px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       PROBLEM — editorial 2-col
+       ═══════════════════════════════════════════════ */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .pain-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .pain-item {
+      background: var(--paper);
+      padding: 32px 32px;
+      border-radius: var(--radius);
+      border-inline-start: 4px solid var(--tan);
+      box-shadow: var(--shadow-soft);
+    }
+    .pain-item:nth-child(2) { border-inline-start-color: var(--sage); }
+    .pain-item:nth-child(3) { border-inline-start-color: var(--blue); }
+    .pain-quote {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .pain-after {
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════
+       BRIDGE — "this is exactly what the box solves"
+       ═══════════════════════════════════════════════ */
+    .bridge {
+      padding: 96px 0;
+      background: transparent;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .bridge::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      max-width: 600px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--tan), transparent);
+    }
+    .bridge-head {
+      max-width: 780px;
+      margin: 0 auto 56px;
+    }
+    .bridge-head .eyebrow { color: var(--sage-deep); }
+    .bridge-title {
+      font-size: clamp(2rem, 4.2vw, 3.4rem);
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+    .bridge-title em {
+      font-style: normal;
+      color: var(--sage-deep);
+      position: relative;
+      display: inline-block;
+    }
+    .bridge-title em::after {
+      content: '';
+      position: absolute;
+      bottom: 8%;
+      left: -4px;
+      right: -4px;
+      height: 18%;
+      background: var(--sage);
+      opacity: 0.25;
+      z-index: -1;
+      border-radius: 3px;
+    }
+    .bridge-lead {
+      font-size: clamp(17px, 1.6vw, 20px);
+      color: var(--ink-mid);
+      line-height: 1.7;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .bridge-lead strong {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .bridge-promises {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 940px;
+      margin: 0 auto;
+    }
+    .bridge-promise {
+      background: var(--paper);
+      padding: 36px 28px;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .bridge-promise:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+    .promise-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--sage);
+      color: var(--paper);
+      border-radius: 50%;
+    }
+    .bridge-promise:nth-child(2) .promise-icon { background: var(--tan); color: var(--ink); }
+    .bridge-promise:nth-child(3) .promise-icon { background: var(--blue); color: var(--paper); }
+    .promise-icon svg { width: 26px; height: 26px; display: block; }
+
+    .promise-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--ink);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .promise-text {
+      font-size: 15px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════
+       JOURNEY (3 chapters)
+       ═══════════════════════════════════════════════ */
+    .journey-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 64px;
+    }
+    .journey-head .section-lead { margin: 0 auto; }
+
+    .chapters {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .chapter-card {
+      background: var(--paper);
+      border-radius: var(--radius-lg);
+      padding: 44px 36px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .chapter-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lift);
+    }
+    .chapter-card .accent-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: var(--tan);
+    }
+    .chapter-card.c2 .accent-bar { background: var(--sage); }
+    .chapter-card.c3 .accent-bar { background: var(--blue); }
+
+    .chap-emoji {
+      font-size: 36px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .chap-num {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: var(--tan-deep);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .chapter-card.c2 .chap-num { color: var(--sage-deep); }
+    .chapter-card.c3 .chap-num { color: var(--blue-deep); }
+
+    .chap-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .chap-desc {
+      font-size: 15px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .chap-count {
+      display: inline-block;
+      background: var(--cream);
+      color: var(--ink);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SAMPLE CARDS
+       ═══════════════════════════════════════════════ */
+    .samples-head {
+      max-width: 720px;
+      margin-bottom: 64px;
+    }
+    .samples-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .sample-card {
+      background: var(--paper);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-card);
+      border-top: 5px solid var(--tan);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .sample-card.s2 { border-top-color: var(--sage); }
+    .sample-card.s3 { border-top-color: var(--blue); }
+    .sample-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lift);
+    }
+    .sample-tag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--tan-deep);
+      margin-bottom: 24px;
+    }
+    .sample-card.s2 .sample-tag { color: var(--sage-deep); }
+    .sample-card.s3 .sample-tag { color: var(--blue-deep); }
+    .sample-q {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.45;
+      flex-grow: 1;
+    }
+    .sample-deep {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px dashed var(--line);
+      font-size: 15px;
+      color: var(--ink-mid);
+      font-style: italic;
+      line-height: 1.55;
+      display: flex;
+      gap: 8px;
+    }
+    .sample-deep .deep-icon {
+      flex-shrink: 0;
+      color: var(--tan-deep);
+      font-style: normal;
+      font-weight: 700;
+    }
+    .sample-card.s2 .deep-icon { color: var(--sage-deep); }
+    .sample-card.s3 .deep-icon { color: var(--blue-deep); }
+
+    /* ═══════════════════════════════════════════════
+       BOX — the showpiece "מה במארז"
+       ═══════════════════════════════════════════════ */
+    .box {
+      padding: 140px 0;
+      background: transparent;
+      position: relative;
+    }
+    .box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg,
+        var(--tan) 0%, var(--tan) 33.333%,
+        var(--sage) 33.333%, var(--sage) 66.666%,
+        var(--blue) 66.666%, var(--blue) 100%);
+    }
+
+    .box-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 88px;
+    }
+    .box-head .eyebrow { color: var(--forest); }
+    .box-head h2 {
+      font-size: clamp(2.2rem, 4.6vw, 4rem);
+      font-weight: 900;
+      color: var(--forest);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+    }
+    .box-head p {
+      font-size: clamp(17px, 1.6vw, 20px);
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    .box-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .box-card {
+      background: var(--paper);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .box-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lift);
+    }
+    .box-card .num {
+      position: absolute;
+      top: 32px;
+      left: 36px;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--tan-deep);
+      letter-spacing: 2px;
+    }
+    .box-card.b2 .num { color: var(--sage-deep); }
+    .box-card.b3 .num { color: var(--blue-deep); }
+    .box-card.b4 .num { color: var(--ink-soft); }
+
+    .box-icon-wrap {
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      background: var(--tan-mist);
+    }
+    .box-card.b2 .box-icon-wrap { background: var(--sage-mist); }
+    .box-card.b3 .box-icon-wrap { background: var(--blue-mist); }
+    .box-card.b4 .box-icon-wrap { background: var(--cream); }
+
+    .box-icon-wrap svg { width: 56px; height: 56px; display: block; }
+
+    .box-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .box-desc {
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+    .box-meta {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--ink-soft);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       TESTIMONIALS
+       ═══════════════════════════════════════════════ */
+    .testimonials-head {
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto 64px;
+    }
+    .testimonials-head .section-lead { margin: 0 auto; max-width: 620px; }
+    .testimonials-title {
+      white-space: nowrap;
+      font-size: clamp(1.5rem, 3.4vw, 3rem);
+    }
+    @media (max-width: 720px) {
+      .testimonials-title {
+        white-space: normal;
+        font-size: clamp(1.4rem, 5.5vw, 2.2rem);
+      }
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .testimonial {
+      background: var(--paper);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .testimonial:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lift);
+    }
+    .testimonial-quote-mark {
+      position: absolute;
+      top: 28px;
+      left: 36px;
+      font-size: 56px;
+      line-height: 0.6;
+      color: var(--tan);
+      font-weight: 700;
+      opacity: 0.45;
+      pointer-events: none;
+      font-family: Georgia, serif;
+    }
+    .testimonial.t2 .testimonial-quote-mark { color: var(--sage); }
+    .testimonial.t3 .testimonial-quote-mark { color: var(--blue); }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+      color: var(--tan-deep);
+    }
+    .testimonial-stars svg { width: 16px; height: 16px; }
+    .testimonial.t2 .testimonial-stars { color: var(--sage-deep); }
+    .testimonial.t3 .testimonial-stars { color: var(--blue-deep); }
+
+    .testimonial-text {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.65;
+      flex-grow: 1;
+      margin-bottom: 28px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--tan);
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .testimonial.t2 .testimonial-avatar { background: var(--sage); color: var(--paper); }
+    .testimonial.t3 .testimonial-avatar { background: var(--blue); color: var(--paper); }
+
+    .testimonial-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .testimonial-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .testimonial-context {
+      font-size: 13px;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+
+    /* ═══════════════════════════════════════════════
+       NIR — about
+       ═══════════════════════════════════════════════ */
+    .nir-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 60px;
+      align-items: stretch;
+    }
+    .nir-photo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      text-align: center;
+    }
+    .nir-avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: var(--tan);
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 900;
+      position: relative;
+      z-index: 1;
+    }
+    .nir-photo-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 18%;
+      border: 4px solid var(--tan);
+      box-shadow: 0 14px 36px rgba(45, 42, 34, 0.18);
+      display: block;
+    }
+    .nir-photo .nir-name {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--ink);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .nir-photo .nir-title {
+      font-size: 14px;
+      color: var(--ink-mid);
+      max-width: 240px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .nir-stats {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .nir-stats div b {
+      display: block;
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--tan-soft);
+      line-height: 1;
+    }
+    .nir-stats div span {
+      font-size: 13px;
+      color: var(--blue-soft);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .nir-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .nir-quote {
+      font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+      line-height: 1.35;
+      color: var(--ink);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      position: relative;
+      padding-top: 32px;
+    }
+    .nir-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      font-size: 80px;
+      color: var(--sage);
+      line-height: 0.6;
+      font-weight: 700;
+      opacity: 0.35;
+      font-family: Georgia, serif;
+    }
+    .nir-bio {
+      margin-top: 28px;
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════
+       CTA
+       ═══════════════════════════════════════════════ */
+    .cta-section {
+      padding: 96px 0;
+      background: var(--sage-deep);
+      color: var(--paper);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(197, 176, 149, 0.18), transparent 60%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .cta-inner { position: relative; z-index: 2; }
+    .cta-title {
+      font-size: clamp(2rem, 4.6vw, 3.6rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--paper);
+      max-width: 700px;
+      margin-inline: auto;
+    }
+    .cta-title .accent {
+      background: var(--tan);
+      color: var(--ink);
+      padding: 0 14px;
+      border-radius: 8px;
+    }
+    .cta-sub {
+      font-size: 19px;
+      color: var(--blue-soft);
+      max-width: 540px;
+      margin: 0 auto 56px;
+      line-height: 1.55;
+    }
+
+    .price-card {
+      background: var(--paper);
+      color: var(--ink);
+      padding: 48px 40px;
+      border-radius: var(--radius-lg);
+      max-width: 480px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-deep);
+      position: relative;
+    }
+    .price-launch {
+      position: absolute;
+      top: -16px;
+      right: 32px;
+      background: var(--ink);
+      color: var(--tan);
+      padding: 8px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .price-amount {
+      font-size: 88px;
+      font-weight: 900;
+      color: var(--sage-deep);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .price-currency {
+      font-size: 36px;
+      vertical-align: top;
+      font-weight: 800;
+      color: var(--tan-deep);
+    }
+    .price-old {
+      font-size: 22px;
+      color: var(--ink-faint);
+      font-weight: 600;
+      text-decoration: line-through;
+    }
+    .price-tag {
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin-bottom: 32px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    .price-shipping {
+      font-size: 14px;
+      color: var(--ink-mid);
+      margin-bottom: 32px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .price-card .btn {
+      width: 100%;
+      font-size: 18px;
+      padding: 20px 36px;
+    }
+    .price-includes {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+    .price-includes b {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    /* ═══════════════════════════════════════════════
+       FAQ
+       ═══════════════════════════════════════════════ */
+    .faq-head {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 56px;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .faq-item {
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .faq-item summary {
+      padding: 24px 28px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      list-style: none;
+      transition: background var(--dur) var(--ease);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: var(--cream); }
+    .faq-item summary:focus-visible {
+      outline: 3px solid var(--sage);
+      outline-offset: -3px;
+    }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--cream);
+      color: var(--sage-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    .faq-item[open] .faq-icon {
+      transform: rotate(45deg);
+      background: var(--sage);
+      color: var(--paper);
+    }
+    .faq-answer {
+      padding: 0 28px 26px;
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════ */
+    footer {
+      background: var(--ink);
+      color: var(--tan-soft);
+      padding: 64px 0 36px;
+      text-align: center;
+    }
+    footer .signature {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--tan);
+      margin-bottom: 6px;
+    }
+    footer .ftext {
+      font-size: 14px;
+      opacity: 0.85;
+    }
+    footer .flinks {
+      margin-top: 18px;
+      font-size: 14px;
+    }
+    footer a {
+      color: var(--sage-soft);
+      font-weight: 600;
+      transition: color var(--dur) var(--ease);
+    }
+    footer a:hover { color: var(--cream); }
+    footer a:focus-visible {
+      outline: 2px solid var(--sage);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+    .copy {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(226, 212, 189, 0.10);
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════ */
+    @media (max-width: 980px) {
+      .problem-grid { grid-template-columns: 1fr; gap: 48px; }
+      .chapters { grid-template-columns: 1fr; }
+      .samples-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .nir-grid { grid-template-columns: 1fr; }
+      .bridge-promises { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      section.block { padding: 80px 0; }
+      .hero { padding: 64px 0 56px; }
+      .box { padding: 100px 0; }
+      .bridge { padding: 84px 0; }
+      .cta-section { padding: 84px 0; }
+      .nir-photo-img { width: 160px; height: 160px; }
+      .box-grid { grid-template-columns: 1fr; }
+      .card-stack-wrap { max-width: 320px; }
+      .card-stack { height: 260px; }
+      .price-card { padding: 36px 28px; }
+      .price-amount { font-size: 72px; }
+      .box-card { padding: 36px 28px; }
+      .box-card .num { top: 24px; left: 28px; }
+      .pain-item { padding: 24px 24px; }
+      .chapter-card { padding: 36px 28px; }
+      .sample-card { padding: 32px 28px; min-height: auto; }
+      .testimonial { padding: 32px 28px; }
+      .promise-items { gap: 8px; }
+      .promise-items .sep { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; width: 100%; }
+      .hero-actions .btn { width: 100%; }
+      .nir-quote { padding-top: 24px; font-size: 1.4rem; }
+      .nir-quote::before { font-size: 72px; top: -8px; }
+      .promise-items { flex-direction: column; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════ -->
+  <nav aria-label="ניווט ראשי">
+    <div class="nav-row">
+      <a href="#" class="brand" aria-label="דייט פיננסי — לעמוד הבית">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>דייט פיננסי</span>
+      </a>
+      <a href="checkout.html" class="nav-cta">לחצ.י להזמנה</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════ -->
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <div class="launch-pill">מחיר השקה · זמן מוגבל</div>
+
+      <h1 class="hero-title">
+        זה אף פעם לא רק <span class="word">כסף.</span>
+      </h1>
+
+      <div class="hero-promise">
+        <p class="promise-items">
+          <span>60 קלפי שיחה</span>
+          <span class="sep">·</span>
+          <span>בקבוק יין</span>
+          <span class="sep">·</span>
+          <span>פלייליסט מודרך</span>
+        </p>
+        <p class="promise-line">
+          וערב אחד שמשנה את <em>הדינמיקה הכלכלית</em> בבית שלכם.
+        </p>
+      </div>
+
+      <div class="hero-actions">
+        <a href="checkout.html" class="btn btn-primary">
+          אני רוצה להתחיל
+          <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </a>
+        <a href="#whats-inside" class="btn btn-ghost">מה במארז</a>
+      </div>
+
+      <div class="price-line">
+        <strong>₪179</strong>
+        <s>₪249</s>
+        <span class="pill">סה״כ פחות מ-₪200</span>
+      </div>
+      <div class="shipping-note">+ ₪20 משלוח עד הבית</div>
+
+      <div class="card-stack-wrap">
+        <div class="card-stack" id="card-stack" role="group" aria-label="הצצה לקלפים — לחיצה תעבור לקלף הבא">
+          <article class="preview-card" data-color="tan">
+            <div class="preview-tag">📖 עבר</div>
+            <p class="preview-q">המשפחה שלך דיברה על כסף בילדות?</p>
+            <div class="preview-num">קלף 1 / 60</div>
+          </article>
+          <article class="preview-card" data-color="sage">
+            <div class="preview-tag">👁️ הווה</div>
+            <p class="preview-q">מה לא נותן לך לישון בלילה לגבי הכספים שלנו?</p>
+            <div class="preview-num">קלף 24 / 60</div>
+          </article>
+          <article class="preview-card" data-color="blue">
+            <div class="preview-tag">🌅 עתיד</div>
+            <p class="preview-q">תאר לי את יום שלישי בבוקר שלך בעוד 5 שנים.</p>
+            <div class="preview-num">קלף 28 / 60</div>
+          </article>
+        </div>
+
+        <div class="stack-controls">
+          <button type="button" class="stack-btn" data-action="prev" aria-label="קלף קודם">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+          <div class="stack-dots" role="tablist">
+            <button type="button" class="dot active" data-index="0" aria-label="קלף 1 — עבר"></button>
+            <button type="button" class="dot" data-index="1" aria-label="קלף 2 — הווה"></button>
+            <button type="button" class="dot" data-index="2" aria-label="קלף 3 — עתיד"></button>
+          </div>
+          <button type="button" class="stack-btn" data-action="next" aria-label="קלף הבא">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <div class="stack-hint">לחצו על הקלף או על החצים כדי לעבור</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       ATTRIBUTION
+       ═══════════════════════════════════════════════ -->
+  <aside class="attribution" aria-label="קרדיט המוצר">
+    <div class="wrap">
+      <p class="attribution-text">
+        פותח על ידי <strong>ניר יפרח</strong> — מומחה לכלכלת המשפחה ומתכנן פיננסי CFP
+      </p>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════
+       PROBLEM
+       ═══════════════════════════════════════════════ -->
+  <section class="block">
+    <div class="wrap">
+      <div class="problem-grid">
+        <div>
+          <span class="eyebrow">האמת שאף אחד לא אומר</span>
+          <h2 class="section-title">
+            אתם לא לבד.<br>
+            רוב הזוגות פוחדים לדבר על כסף.
+          </h2>
+          <p class="section-lead">
+            זה הנושא הכי כבד בבית.<br>
+            בכל פעם שמישהו מנסה לפתוח אותו — הוא נסגר בויכוח, בשתיקה, או ב„נדבר על זה אחר כך”.<br>
+            לא בגלל שאתם לא בסדר.<br>
+            בגלל שאף אחד לא לימד אתכם איך.
+          </p>
+        </div>
+
+        <div class="pain-list">
+          <article class="pain-item">
+            <h3 class="pain-quote">„בא לי לדבר איתך על כסף”</h3>
+            <p class="pain-after">המשפט הזה נשמע כמו אזעקה.<br>לא כמו שיחה.<br>שניכם נדרכים לפני שאמרתם מילה.</p>
+          </article>
+          <article class="pain-item">
+            <h3 class="pain-quote">„מאיפה בכלל מתחילים?”</h3>
+            <p class="pain-after">לא ברור מה לשאול קודם.<br>אז לא שואלים בכלל.<br>וזה נדחה לעוד שבוע.</p>
+          </article>
+          <article class="pain-item">
+            <h3 class="pain-quote">„אנחנו מנהלים מיליונים — בלי לדבר”</h3>
+            <p class="pain-after">משכנתא, פנסיה, חינוך, חסכונות.<br>עשור של החלטות שנעשו על אוטומט.<br>בלי ישיבה אחת.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       BRIDGE — solution promise
+       ═══════════════════════════════════════════════ -->
+  <section class="bridge">
+    <div class="wrap">
+      <div class="bridge-head">
+        <span class="eyebrow">כאן נכנס המארז</span>
+        <h2 class="bridge-title">
+          כל מה שרציתם לשאול.<br>
+          וגם מה שלא ידעתם <em>איך.</em>
+        </h2>
+        <p class="bridge-lead">
+          זה לא על מספרים.<br>
+          לא על כמה נכנס.<br>
+          לא על כמה יוצא.<br>
+          זה על השיחה <strong>מאחורי</strong> המספרים.<br>
+          על כל מה שלא הצלחתם להגיד אחד לשני שנים.<br>
+          הקלפים שואלים בשבילכם — ומובילים אתכם לעומקים שלא הכרתם, בקצב שלכם.
+        </p>
+      </div>
+
+      <div class="bridge-promises">
+        <article class="bridge-promise">
+          <div class="promise-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="promise-title">נגיש</h3>
+          <p class="promise-text">אין צורך לדעת מאיפה מתחילים. הקלף הראשון יודע.</p>
+        </article>
+
+        <article class="bridge-promise">
+          <div class="promise-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="promise-title">עמוק</h3>
+          <p class="promise-text">כל קלף צולל לעוד שכבה. לא חקירה — סיפור.</p>
+        </article>
+
+        <article class="bridge-promise">
+          <div class="promise-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="promise-title">בטוח</h3>
+          <p class="promise-text">בלי מומחים, בלי ויכוח. רק שני אנשים שמספרים.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       JOURNEY (3 chapters)
+       ═══════════════════════════════════════════════ -->
+  <section class="block tinted">
+    <div class="wrap">
+      <div class="journey-head">
+        <span class="eyebrow">המסע</span>
+        <h2 class="section-title">3 פרקים. 60 שאלות. ערב אחד.</h2>
+        <p class="section-lead">
+          חיפוש משותף אחר ה„למה” — שלך לבד, ושלכם ביחד.<br>
+          הקלפים מובילים אתכם דרך מאיפה הגעתם, איפה אתם עומדים, ולאן אתם הולכים.
+        </p>
+      </div>
+
+      <div class="chapters">
+        <article class="chapter-card">
+          <span class="accent-bar" aria-hidden="true"></span>
+          <div class="chap-emoji" aria-hidden="true">📖</div>
+          <div class="chap-num">פרק 01</div>
+          <h3 class="chap-title">מאיפה הגענו?</h3>
+          <p class="chap-desc">על הבית שגדלת בו, ההורים, הזיכרונות הראשונים שעיצבו אותך כלכלית.</p>
+          <span class="chap-count">20 קלפים</span>
+        </article>
+
+        <article class="chapter-card c2">
+          <span class="accent-bar" aria-hidden="true"></span>
+          <div class="chap-emoji" aria-hidden="true">👁️</div>
+          <div class="chap-num">פרק 02</div>
+          <h3 class="chap-title">איפה אנחנו עומדים?</h3>
+          <p class="chap-desc">המציאות שלכם, ההרגלים, הדינמיקה. מה עובד ומה לא — בלי שיפוטיות.</p>
+          <span class="chap-count">20 קלפים</span>
+        </article>
+
+        <article class="chapter-card c3">
+          <span class="accent-bar" aria-hidden="true"></span>
+          <div class="chap-emoji" aria-hidden="true">🌅</div>
+          <div class="chap-num">פרק 03</div>
+          <h3 class="chap-title">לאן אנחנו הולכים?</h3>
+          <p class="chap-desc">העתיד, החלומות, המחויבויות. הקלף האחרון הופך את הכל לפעולה קונקרטית.</p>
+          <span class="chap-count">20 קלפים</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SAMPLE CARDS
+       ═══════════════════════════════════════════════ -->
+  <section class="block">
+    <div class="wrap">
+      <div class="samples-head">
+        <span class="eyebrow">הצצה לקלפים</span>
+        <h2 class="section-title">3 שאלות אמיתיות מתוך 60.</h2>
+        <p class="section-lead">
+          כל קלף מתחיל בשאלה.<br>
+          וממשיך עם שאלת עומק שמזמינה לרדת לשכבה הבאה.<br>
+          לא לחקור.<br>
+          לספר.
+        </p>
+      </div>
+
+      <div class="samples-grid">
+        <article class="sample-card">
+          <div class="sample-tag">📖 עבר</div>
+          <p class="sample-q">מה היה הפחד הכלכלי הכי גדול של ההורים שלך — שירשת מבלי לשים לב?</p>
+          <p class="sample-deep">
+            <span class="deep-icon" aria-hidden="true">🔍</span>
+            ואם הפחד הזה היה נעלם מחר — מה היית עושה אחרת?
+          </p>
+        </article>
+
+        <article class="sample-card s2">
+          <div class="sample-tag">👁️ הווה</div>
+          <p class="sample-q">על מה אנחנו באמת רבים כשאנחנו רבים על כסף? שליטה? פחד? חוסר הערכה?</p>
+          <p class="sample-deep">
+            <span class="deep-icon" aria-hidden="true">🔍</span>
+            מה אתה צריך ממני שלא ביקשת בקול?
+          </p>
+        </article>
+
+        <article class="sample-card s3">
+          <div class="sample-tag">🌅 עתיד</div>
+          <p class="sample-q">אם לא נשנה שום דבר בהתנהלות שלנו — איפה נמצא את עצמנו בעוד 10 שנים?</p>
+          <p class="sample-deep">
+            <span class="deep-icon" aria-hidden="true">🔍</span>
+            ומה הצעד הראשון שאנחנו יכולים לעשות השבוע?
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       BOX — what's inside
+       ═══════════════════════════════════════════════ -->
+  <section class="box" id="whats-inside">
+    <div class="wrap">
+      <div class="box-head">
+        <span class="eyebrow">מה במארז</span>
+        <h2>חבילה אחת.<br>ארבעה דברים.<br>ערב שלם.</h2>
+        <p>כל מה שצריך לערב הזה — מגיע אליכם הביתה ובמייל.<br>הכל מוכן.<br>רק לפתוח.</p>
+      </div>
+
+      <div class="box-grid">
+
+        <!-- 01: 60 cards -->
+        <article class="box-card">
+          <div class="num">01</div>
+          <div class="box-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <g transform="rotate(-8 32 32)">
+                <rect x="14" y="12" width="30" height="42" rx="5" fill="#A99479"/>
+              </g>
+              <g transform="rotate(7 32 32)">
+                <rect x="20" y="14" width="30" height="42" rx="5" fill="#C5B095"/>
+                <line x1="26" y1="28" x2="44" y2="28" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+                <line x1="26" y1="36" x2="40" y2="36" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+                <line x1="26" y1="44" x2="42" y2="44" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+              </g>
+            </svg>
+          </div>
+          <h3 class="box-title">60 קלפי שיחה</h3>
+          <p class="box-desc">קלפים מודפסים על נייר עבה — לפרוש על השולחן, לערבב, לשלוף. החוויה הפיזית של ערב.</p>
+          <div class="box-meta">3 פרקים · 20 קלפים בכל אחד</div>
+        </article>
+
+        <!-- 02: Wine -->
+        <article class="box-card b2">
+          <div class="num">02</div>
+          <div class="box-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="26" y="4" width="12" height="6" rx="1.5" fill="#5F6B41"/>
+              <rect x="27" y="10" width="10" height="14" fill="#7A8854"/>
+              <path d="M22 30 Q22 24 27 23 L37 23 Q42 24 42 30 L42 56 Q42 60 38 60 L26 60 Q22 60 22 56 Z" fill="#7A8854"/>
+              <rect x="25" y="38" width="14" height="14" rx="1.5" fill="#FFFFFF" opacity="0.55"/>
+              <line x1="28" y1="44" x2="36" y2="44" stroke="#5F6B41" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+              <line x1="28" y1="48" x2="34" y2="48" stroke="#5F6B41" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+            </svg>
+          </div>
+          <h3 class="box-title">בקבוק יין לבחירתכם</h3>
+          <p class="box-desc">לבן או אדום. כי דייט אמיתי מתחיל עם משהו לתת לו טעם — ולהוריד את ההגנות בעדינות.</p>
+          <div class="box-meta">בחירה במעמד ההזמנה</div>
+        </article>
+
+        <!-- 03: Playlist -->
+        <article class="box-card b3">
+          <div class="num">03</div>
+          <div class="box-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="28" fill="#A0AEBA" opacity="0.20"/>
+              <rect x="11" y="28" width="6" height="8" rx="3" fill="#A0AEBA"/>
+              <rect x="20" y="22" width="6" height="20" rx="3" fill="#7A8B98"/>
+              <rect x="29" y="14" width="6" height="36" rx="3" fill="#7A8B98"/>
+              <rect x="38" y="22" width="6" height="20" rx="3" fill="#7A8B98"/>
+              <rect x="47" y="28" width="6" height="8" rx="3" fill="#A0AEBA"/>
+            </svg>
+          </div>
+          <h3 class="box-title">פלייליסט מודרך</h3>
+          <p class="box-desc">לא רק מוזיקה — שילוב של שירים, הנחיה קצרה לפני כל פרק וטיפים בקול של ניר.</p>
+          <div class="box-meta">95 דקות · Spotify ו-Apple Music</div>
+        </article>
+
+        <!-- 04: Tips & guide -->
+        <article class="box-card b4">
+          <div class="num">04</div>
+          <div class="box-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="26" fill="#C5B095" opacity="0.30"/>
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#A99479" stroke-width="2.5"/>
+              <path d="M32 9 L37 32 L32 30 Z" fill="#A99479"/>
+              <path d="M32 30 L27 32 L32 9 Z" fill="#C5B095"/>
+              <path d="M32 55 L37 32 L32 34 Z" fill="#C5B095"/>
+              <path d="M32 34 L27 32 L32 55 Z" fill="#A99479"/>
+              <circle cx="32" cy="32" r="3.5" fill="#2D2A22"/>
+            </svg>
+          </div>
+          <h3 class="box-title">צידה לדרך</h3>
+          <p class="box-desc">מדריך הפעלה, 10 העקרונות שלי, וטיפים לאיך פותחים, מה לעשות אם נתקעים, ואיך מסיימים בלי ריב.</p>
+          <div class="box-meta">PDF + הקלטות אודיו</div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TESTIMONIALS
+       ═══════════════════════════════════════════════ -->
+  <section class="block">
+    <div class="wrap">
+      <div class="testimonials-head">
+        <span class="eyebrow">זוגות שכבר עשו את הערב</span>
+        <h2 class="section-title testimonials-title">„חשבנו שאנחנו מדברים על כסף.”</h2>
+        <p class="section-lead">
+          שלושה זוגות, שלוש שיחות, שלושה רגעי הבנה שלא יכלו לקרות בלי המארז.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testimonial">
+          <div class="testimonial-quote-mark" aria-hidden="true">“</div>
+          <div class="testimonial-stars" aria-label="חמישה כוכבים">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+          </div>
+          <p class="testimonial-text">
+            חשבנו שאנחנו מדברים על הכל.<br>
+            הקלף השני בפרק „עבר” גרם לי לבכות.<br>
+            לא ידעתי מה יובל חושב על העזרה שאבא שלי נותן לנו עם המשכנתא.<br>
+            עכשיו אני יודעת.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" aria-hidden="true">ש</div>
+            <div class="testimonial-meta">
+              <span class="testimonial-name">שירי ויובל</span>
+              <span class="testimonial-context">נשואים 7 שנים · ראשון לציון</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial t2">
+          <div class="testimonial-quote-mark" aria-hidden="true">“</div>
+          <div class="testimonial-stars" aria-label="חמישה כוכבים">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+          </div>
+          <p class="testimonial-text">
+            קנינו את זה במקום עוד מסעדה ליום הנישואין.<br>
+            בלילה כבר לא רצינו לעצור.<br>
+            למחרת בבוקר תכננו את 2026 לפי מה שאנחנו באמת רוצים — לא לפי מה שאנחנו „אמורים”.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" aria-hidden="true">מ</div>
+            <div class="testimonial-meta">
+              <span class="testimonial-name">מיכל ועמית</span>
+              <span class="testimonial-context">יחד 11 שנה · מודיעין</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial t3">
+          <div class="testimonial-quote-mark" aria-hidden="true">“</div>
+          <div class="testimonial-stars" aria-label="חמישה כוכבים">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+          </div>
+          <p class="testimonial-text">
+            בעלי לא דיבר על כסף.<br>
+            אף פעם.<br>
+            הקלף הראשון על הילדות פתח אצלו דלת שאני ניסיתי לפתוח 8 שנים.<br>
+            עכשיו יש לנו ערב כסף קבוע פעם בחודש — והוא זה שמזכיר לי.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" aria-hidden="true">ר</div>
+            <div class="testimonial-meta">
+              <span class="testimonial-name">רינת ואיתי</span>
+              <span class="testimonial-context">נשואים 9 שנים · גבעתיים</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       NIR
+       ═══════════════════════════════════════════════ -->
+  <section class="block tinted">
+    <div class="wrap">
+      <div class="nir-grid">
+        <div class="nir-photo">
+          <div>
+            <img src="assets/nir.jpg" alt="ניר יפרח — מתכנן פיננסי CFP" class="nir-photo-img" loading="lazy">
+          </div>
+          <div>
+            <div class="nir-name">ניר יפרח</div>
+            <div class="nir-title">מומחה לכלכלת המשפחה ומתכנן פיננסי CFP</div>
+          </div>
+        </div>
+
+        <div class="nir-content">
+          <span class="eyebrow">האיש מאחורי הקלפים</span>
+          <p class="nir-quote">
+            שיח על כסף הוא אף פעם לא רק על כסף.<br>
+            הוא תמיד על משהו אחר — על שליטה, על פחד, על אהבה, הרגלים.
+          </p>
+          <p class="nir-bio">
+            מלווה משפחות בגיל 30+ בתכנון פיננסי.<br>
+            הסיבה שלקוחות חוזרים אליי היא לא הטבלאות — אלא שאני משלב יעוץ זוגי, פסיכולוגיה וכלכלה באותה שיחה.<br>
+            כי מספרים הם תוצאה של פעולות.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       CTA
+       ═══════════════════════════════════════════════ -->
+  <section class="cta-section" id="buy">
+    <div class="wrap cta-inner">
+      <h2 class="cta-title">
+        המארז שיעזור לכם לפתוח<br>
+        את השיחה שתמיד רציתם לעשות.
+      </h2>
+      <p class="cta-sub">מזמינים עכשיו וקובעים תאריך לדייט.</p>
+
+      <div class="price-card">
+        <div class="price-launch">מחיר השקה</div>
+
+        <div class="price-row">
+          <div class="price-amount">179<span class="price-currency">₪</span></div>
+          <div class="price-old">₪249</div>
+        </div>
+        <div class="price-shipping">+ ₪20 דמי משלוח · סה״כ ₪199</div>
+
+        <a href="checkout.html" class="btn btn-primary">
+          להזמין עכשיו
+          <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </a>
+
+        <div class="price-includes">
+          <b>בחבילה:</b> 60 קלפים · בקבוק יין לבחירה · פלייליסט מודרך · צידה לדרך
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FAQ
+       ═══════════════════════════════════════════════ -->
+  <section class="block tinted">
+    <div class="narrow">
+      <div class="faq-head">
+        <span class="eyebrow">שאלות נפוצות</span>
+        <h2 class="section-title">מה שזוגות שואלים לפני שהם קונים.</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>
+            כמה זמן לוקח ערב אחד של דייט פיננסי?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            בין שעה לשעה וחצי.<br>
+            אפשר לעבור על כל 60 הקלפים בערב אחד מרוכז, או לפצל ל-3 ערבים — פרק לכל ערב.<br>
+            שני המסלולים עובדים.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            מה אם בן/בת הזוג שלי מתנגד/ת לרעיון?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            תתחילו בקלף הראשון בלבד.<br>
+            שאלה אחת.<br>
+            תראו לאן זה הולך.<br>
+            ברוב המקרים — הקלף השני מגיע מעצמו.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            צריך להיות זוג נשוי? או רק עם ילדים?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            לא.<br>
+            הקלפים מתאימים לכל זוגיות שיש בה דינמיקה כלכלית משותפת.<br>
+            גם זוגות ללא ילדים, גם בן זוג שני, גם זוגות צעירים בתחילת הדרך.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            איך מקבלים את החבילה?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            המארז הפיזי — קלפים, יין, ומדריך מודפס — נשלח אליכם הביתה תוך 3-5 ימי עסקים.<br>
+            עלות משלוח: ₪20.<br>
+            הגישה הדיגיטלית לפלייליסט המודרך וצידה לדרך מגיעה במייל מיד אחרי ההזמנה.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            מה אם זה לא יעבוד אצלנו?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            שאלה טובה.<br>
+            זה תלוי הרבה בדינאמיקה שלכם — ובפתיחות שכל אחד מכם מביא לערב.<br>
+            הקלפים לא עושים פלא.<br>
+            הם פותחים דלת.<br>
+            אתם מי שעוברים בה.<br>
+            מה שאני מבטיח: אם הרגשתם שזה לא בשבילכם — תכתבו לי במייל תוך 14 יום, ואני מחזיר את הכסף.<br>
+            בלי שאלות.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════ -->
+  <footer>
+    <div class="wrap">
+      <div class="signature">ניר יפרח · CFP</div>
+      <div class="ftext">מומחה לכלכלת המשפחה · מתכנן פיננסי · יועץ משכנתאות</div>
+      <div class="flinks">
+        <a href="https://niryifrahcfp.co.il">niryifrahcfp.co.il</a>
+        <span style="opacity: 0.4; margin: 0 8px;">·</span>
+        <a href="mailto:niryifrah4@gmail.com">niryifrah4@gmail.com</a>
+      </div>
+      <div class="copy">
+        © 2026 ווי הדרכה ויזמות · כל הזכויות שמורות
+        <span style="opacity:0.4; margin: 0 8px;">·</span>
+        <a href="terms.html" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">תקנון ופרטיות</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hero card stack — cycle through 3 cards
+    (function() {
+      const stack = document.getElementById('card-stack');
+      if (!stack) return;
+
+      const cards = Array.from(stack.querySelectorAll('.preview-card'));
+      const dots = Array.from(document.querySelectorAll('.stack-dots .dot'));
+      const positions = ['active', 'next', 'far'];
+      let currentIndex = 0;
+
+      function setActive(index) {
+        currentIndex = ((index % cards.length) + cards.length) % cards.length;
+        cards.forEach((card, i) => {
+          const offset = (i - currentIndex + cards.length) % cards.length;
+          card.dataset.position = positions[offset];
+          card.setAttribute('aria-hidden', offset !== 0 ? 'true' : 'false');
+        });
+        dots.forEach((dot, i) => {
+          const isActive = i === currentIndex;
+          dot.classList.toggle('active', isActive);
+          dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+      }
+
+      function next() { setActive(currentIndex + 1); }
+      function prev() { setActive(currentIndex - 1); }
+
+      // Click on stack cycles to next
+      stack.addEventListener('click', next);
+
+      // Arrow buttons
+      document.querySelectorAll('.stack-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (btn.dataset.action === 'next') next(); else prev();
+        });
+      });
+
+      // Dot buttons
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', function(e) {
+          e.stopPropagation();
+          setActive(i);
+        });
+      });
+
+      // Keyboard navigation when stack focused
+      stack.tabIndex = 0;
+      stack.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); next(); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); prev(); }
+      });
+
+      // Touch swipe support
+      let touchStartX = 0;
+      stack.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      stack.addEventListener('touchend', function(e) {
+        const diff = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(diff) > 40) {
+          // RTL: swipe left → next, swipe right → prev
+          diff < 0 ? next() : prev();
+        }
+      }, { passive: true });
+
+      // Initial state
+      setActive(0);
+    })();
+  </script>
+
+</body>
+</html>
