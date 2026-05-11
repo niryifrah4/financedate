@@ -13,36 +13,80 @@
        BRAND TOKENS — Nature Distilled palette
        ═══════════════════════════════════════════════ */
     :root {
-      /* Forest + Cream — warm dominant palette */
-      --forest:       #1F4D2D;   /* ירוק יער עמוק — צבע ראשי לטקסט וכותרות */
-      --forest-deep:  #163823;
-      --forest-soft:  #B5C6B8;
-      --forest-mist:  #DDE6DE;
+      /* פלטת המותג — Date Edition */
+      --salmon:       #BF897F;   /* סלמון ורוד — אקסנט חם רומנטי */
+      --salmon-deep:  #9C6B61;
+      --salmon-soft:  #E0BAB1;
+      --sandstone:    #DAC2B2;   /* אבן חול רכה */
+      --sandstone-soft: #EBD8CB;
+      --pearl:        #F7F2E0;   /* פנינה — רקע ראשי */
+      --pearl-bright: #FBF7EA;
+      --olive:        #707B6D;   /* זית-אפור */
+      --olive-soft:   #A3ADA0;
+      --pewter:       #3A3D3A;   /* כהה — טקסט וכותרות */
+      --pewter-deep:  #25272A;
 
-      --sage:         #7A8854;   /* סייג למבטא וכפתורים משניים */
-      --sage-deep:    #1F4D2D;   /* יישור עם הירוק העמוק */
-      --sage-soft:    #C8D2B3;
-      --sage-mist:    #E5EAD8;
-
-      --tan:          #C5B095;
-      --tan-deep:     #A99479;
-      --tan-soft:     #E2D4BD;
-      --tan-mist:     #ECE0CB;
-
-      --blue:         #A0AEBA;
-      --blue-deep:    #7A8B98;
-      --blue-soft:    #D4DBE0;
-      --blue-mist:    #E8ECEF;
-
-      --cream:        #FBF7EE;   /* קרמי-לבן — רקע ראשי */
-      --cream-2:      #F4EDDB;   /* קרם נגיש לסקשנים מודגשים */
+      /* Mapping to existing variable system */
+      --cream:        #F7F2E0;   /* pearl as body */
+      --cream-2:      #EBD8CB;   /* slight section tint */
       --paper:        #FFFFFF;
 
-      --ink:          #1F4D2D;   /* ירוק יער ככהה ראשי — הקסם של הצבעוניות */
-      --ink-mid:      #4A6650;
-      --ink-soft:     #788A7C;
-      --ink-faint:    #A8B5A9;
-      --line:         #D8CBB1;
+      --ink:          #3A3D3A;   /* dark pewter */
+      --ink-mid:      #707B6D;   /* olive slate */
+      --ink-soft:     #909A8D;
+      --ink-faint:    #BCC3B9;
+      --line:         #DDD5C8;
+
+      /* Sage family → olive/pewter */
+      --sage:         #707B6D;
+      --sage-deep:    #3A3D3A;
+      --sage-soft:    #C4CCC0;
+      --sage-mist:    #E0E4DD;
+
+      /* Tan family → sandstone */
+      --tan:          #DAC2B2;
+      --tan-deep:     #BF897F;
+      --tan-soft:     #EBD8CB;
+      --tan-mist:     #F4EAE0;
+
+      /* Accent: Salmon */
+      --rust:         #BF897F;
+      --rust-soft:    #E0BAB1;
+      --gold:         #BF897F;
+
+      /* Blue → olive variants for compatibility */
+      --blue:         #A3ADA0;
+      --blue-deep:    #707B6D;
+      --blue-soft:    #C4CCC0;
+      --blue-mist:    #E0E4DD;
+
+      /* Forest aliases */
+      --forest:       #3A3D3A;
+      --forest-deep:  #25272A;
+      --forest-soft:  #A3ADA0;
+      --forest-mist:  #E0E4DD;
+
+      /* sunshine renamed to salmon for clarity */
+      --sunshine:     #BF897F;
+      --wood:         #9C6B61;
+
+      /* Chapter colors — semantic mappings */
+      --past:         #F2DED5;   /* fill — light salmon */
+      --past-mid:     #E0BAB1;
+      --past-deep:    #BF897F;
+      --past-darker:  #9C6B61;
+      --past-ink:     #5A2E26;
+
+      --present:      #F2E8DC;   /* fill — light sandstone */
+      --present-mid:  #DAC2B2;
+      --present-deep: #B89C82;
+      --present-ink:  #5A4030;
+
+      --future:       #DDE4D8;   /* fill — soft olive */
+      --future-mid:   #B5C2B2;
+      --future-deep:  #707B6D;
+      --future-darker: #4C5849;
+      --future-ink:   #2E3A2C;
 
       --shadow-soft:  0 2px 12px rgba(45, 42, 34, 0.04);
       --shadow-card:  0 8px 32px rgba(45, 42, 34, 0.06);
@@ -138,13 +182,14 @@
       outline-offset: 3px;
     }
     .btn-primary {
-      background: var(--sage);
-      color: var(--paper);
-      box-shadow: 0 8px 24px rgba(122, 136, 84, 0.30);
+      background: var(--salmon);
+      color: var(--pearl);
+      box-shadow: 0 8px 24px rgba(191, 137, 127, 0.32);
     }
     .btn-primary:hover {
-      background: var(--sage-deep);
-      box-shadow: 0 12px 32px rgba(122, 136, 84, 0.40);
+      background: var(--pewter);
+      color: var(--pearl);
+      box-shadow: 0 12px 32px rgba(58, 61, 58, 0.40);
     }
     .btn-ghost {
       background: transparent;
@@ -226,27 +271,28 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+      background: var(--past);
     }
     .hero::before, .hero::after {
       content: '';
       position: absolute;
       border-radius: 50%;
       pointer-events: none;
-      filter: blur(60px);
+      filter: blur(80px);
     }
     .hero::before {
       top: -160px;
       right: -120px;
       width: 480px;
       height: 480px;
-      background: rgba(197, 176, 149, 0.30);
+      background: rgba(191, 137, 127, 0.40);
     }
     .hero::after {
       bottom: -100px;
       left: -120px;
       width: 420px;
       height: 420px;
-      background: rgba(160, 174, 186, 0.22);
+      background: rgba(218, 194, 178, 0.45);
     }
     .hero-inner { position: relative; z-index: 2; }
 
@@ -284,7 +330,7 @@
     }
     .hero-title .word {
       position: relative;
-      color: var(--sage-deep);
+      color: var(--forest);
       display: inline-block;
     }
     .hero-title .word::after {
@@ -294,8 +340,8 @@
       left: -4px;
       right: -4px;
       height: 18%;
-      background: var(--tan);
-      opacity: 0.55;
+      background: var(--sunshine);
+      opacity: 0.65;
       z-index: -1;
       border-radius: 4px;
     }
@@ -345,8 +391,8 @@
       left: -3px;
       right: -3px;
       height: 22%;
-      background: var(--tan);
-      opacity: 0.45;
+      background: var(--sunshine);
+      opacity: 0.55;
       z-index: -1;
       border-radius: 3px;
     }
@@ -414,14 +460,14 @@
       border-radius: var(--radius-lg);
       padding: 32px 28px;
       text-align: right;
-      box-shadow: var(--shadow-card);
-      border-top: 5px solid var(--tan);
+      box-shadow: var(--shadow-lift);
+      border-top: 6px solid var(--past-deep);
       transition: transform 480ms var(--ease), box-shadow 360ms var(--ease), opacity 360ms var(--ease);
       will-change: transform, opacity;
       backface-visibility: hidden;
     }
-    .preview-card[data-color="sage"] { border-top-color: var(--sage); }
-    .preview-card[data-color="blue"] { border-top-color: var(--blue); }
+    .preview-card[data-color="sage"] { border-top-color: var(--present-deep); }
+    .preview-card[data-color="blue"] { border-top-color: var(--future-deep); }
 
     .preview-card[data-position="active"] {
       transform: rotate(-1.2deg) translateY(0);
@@ -451,11 +497,11 @@
       font-weight: 800;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--tan-deep);
+      color: var(--past-darker);
       margin-bottom: 18px;
     }
-    .preview-card[data-color="sage"] .preview-tag { color: var(--sage-deep); }
-    .preview-card[data-color="blue"] .preview-tag { color: var(--blue-deep); }
+    .preview-card[data-color="sage"] .preview-tag { color: var(--present-ink); }
+    .preview-card[data-color="blue"] .preview-tag { color: var(--future-darker); }
     .preview-q {
       font-size: 19px;
       font-weight: 700;
@@ -598,14 +644,20 @@
       gap: 24px;
     }
     .pain-item {
-      background: var(--paper);
+      background: var(--past);
       padding: 32px 32px;
       border-radius: var(--radius);
-      border-inline-start: 4px solid var(--tan);
+      border-inline-start: 4px solid var(--past-deep);
       box-shadow: var(--shadow-soft);
     }
-    .pain-item:nth-child(2) { border-inline-start-color: var(--sage); }
-    .pain-item:nth-child(3) { border-inline-start-color: var(--blue); }
+    .pain-item:nth-child(2) {
+      background: var(--present);
+      border-inline-start-color: var(--present-deep);
+    }
+    .pain-item:nth-child(3) {
+      background: var(--future);
+      border-inline-start-color: var(--future-deep);
+    }
     .pain-quote {
       font-size: 21px;
       font-weight: 800;
@@ -655,7 +707,7 @@
     }
     .bridge-title em {
       font-style: normal;
-      color: var(--sage-deep);
+      color: var(--forest);
       position: relative;
       display: inline-block;
     }
@@ -666,8 +718,8 @@
       left: -4px;
       right: -4px;
       height: 18%;
-      background: var(--sage);
-      opacity: 0.25;
+      background: var(--sunshine);
+      opacity: 0.55;
       z-index: -1;
       border-radius: 3px;
     }
@@ -709,12 +761,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--sage);
-      color: var(--paper);
+      background: var(--forest);
+      color: var(--sand);
       border-radius: 50%;
     }
-    .bridge-promise:nth-child(2) .promise-icon { background: var(--tan); color: var(--ink); }
-    .bridge-promise:nth-child(3) .promise-icon { background: var(--blue); color: var(--paper); }
+    .bridge-promise:nth-child(2) .promise-icon { background: var(--leaf); color: var(--sand); }
+    .bridge-promise:nth-child(3) .promise-icon { background: var(--wood); color: var(--sand); }
     .promise-icon svg { width: 26px; height: 26px; display: block; }
 
     .promise-title {
@@ -746,7 +798,7 @@
       gap: 24px;
     }
     .chapter-card {
-      background: var(--paper);
+      background: var(--past);
       border-radius: var(--radius-lg);
       padding: 44px 36px;
       box-shadow: var(--shadow-card);
@@ -754,6 +806,8 @@
       overflow: hidden;
       transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
     }
+    .chapter-card.c2 { background: var(--present); }
+    .chapter-card.c3 { background: var(--future); }
     .chapter-card:hover {
       transform: translateY(-6px);
       box-shadow: var(--shadow-lift);
@@ -764,10 +818,10 @@
       left: 0;
       right: 0;
       height: 6px;
-      background: var(--tan);
+      background: var(--past-deep);
     }
-    .chapter-card.c2 .accent-bar { background: var(--sage); }
-    .chapter-card.c3 .accent-bar { background: var(--blue); }
+    .chapter-card.c2 .accent-bar { background: var(--present-deep); }
+    .chapter-card.c3 .accent-bar { background: var(--future-deep); }
 
     .chap-emoji {
       font-size: 36px;
@@ -778,12 +832,12 @@
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 2.5px;
-      color: var(--tan-deep);
+      color: var(--past-darker);
       text-transform: uppercase;
       margin-bottom: 10px;
     }
-    .chapter-card.c2 .chap-num { color: var(--sage-deep); }
-    .chapter-card.c3 .chap-num { color: var(--blue-deep); }
+    .chapter-card.c2 .chap-num { color: var(--present-ink); }
+    .chapter-card.c3 .chap-num { color: var(--future-darker); }
 
     .chap-title {
       font-size: 24px;
@@ -800,7 +854,7 @@
     }
     .chap-count {
       display: inline-block;
-      background: var(--cream);
+      background: rgba(255, 255, 255, 0.55);
       color: var(--ink);
       padding: 6px 14px;
       border-radius: var(--radius-pill);
@@ -813,26 +867,34 @@
        ═══════════════════════════════════════════════ */
     .samples-head {
       max-width: 720px;
-      margin-bottom: 64px;
+      margin: 0 auto 64px;
+      text-align: center;
     }
+    .samples-head .section-lead { margin: 0 auto; }
     .samples-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
     }
     .sample-card {
-      background: var(--paper);
+      background: var(--past);
       border-radius: var(--radius-lg);
       padding: 40px 36px;
       min-height: 320px;
       display: flex;
       flex-direction: column;
       box-shadow: var(--shadow-card);
-      border-top: 5px solid var(--tan);
+      border-top: 5px solid var(--past-deep);
       transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
     }
-    .sample-card.s2 { border-top-color: var(--sage); }
-    .sample-card.s3 { border-top-color: var(--blue); }
+    .sample-card.s2 {
+      background: var(--present);
+      border-top-color: var(--present-deep);
+    }
+    .sample-card.s3 {
+      background: var(--future);
+      border-top-color: var(--future-deep);
+    }
     .sample-card:hover {
       transform: translateY(-6px);
       box-shadow: var(--shadow-lift);
@@ -842,11 +904,11 @@
       font-weight: 800;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--tan-deep);
+      color: var(--past-darker);
       margin-bottom: 24px;
     }
-    .sample-card.s2 .sample-tag { color: var(--sage-deep); }
-    .sample-card.s3 .sample-tag { color: var(--blue-deep); }
+    .sample-card.s2 .sample-tag { color: var(--present-ink); }
+    .sample-card.s3 .sample-tag { color: var(--future-darker); }
     .sample-q {
       font-size: 22px;
       font-weight: 700;
@@ -857,7 +919,7 @@
     .sample-deep {
       margin-top: 24px;
       padding-top: 24px;
-      border-top: 1px dashed var(--line);
+      border-top: 1px dashed rgba(58, 61, 58, 0.18);
       font-size: 15px;
       color: var(--ink-mid);
       font-style: italic;
@@ -867,12 +929,12 @@
     }
     .sample-deep .deep-icon {
       flex-shrink: 0;
-      color: var(--tan-deep);
+      color: var(--past-darker);
       font-style: normal;
       font-weight: 700;
     }
-    .sample-card.s2 .deep-icon { color: var(--sage-deep); }
-    .sample-card.s3 .deep-icon { color: var(--blue-deep); }
+    .sample-card.s2 .deep-icon { color: var(--present-ink); }
+    .sample-card.s3 .deep-icon { color: var(--future-darker); }
 
     /* ═══════════════════════════════════════════════
        BOX — the showpiece "מה במארז"
@@ -1203,6 +1265,9 @@
       color: var(--ink-mid);
       line-height: 1.7;
     }
+    .nir-bio + .nir-bio {
+      margin-top: 18px;
+    }
 
     /* ═══════════════════════════════════════════════
        CTA
@@ -1238,8 +1303,8 @@
       margin-inline: auto;
     }
     .cta-title .accent {
-      background: var(--tan);
-      color: var(--ink);
+      background: var(--sunshine);
+      color: var(--forest);
       padding: 0 14px;
       border-radius: 8px;
     }
@@ -1254,10 +1319,10 @@
     .price-card {
       background: var(--paper);
       color: var(--ink);
-      padding: 48px 40px;
+      padding: 40px;
       border-radius: var(--radius-lg);
       max-width: 480px;
-      margin: 0 auto;
+      margin: 40px auto 0;
       box-shadow: var(--shadow-deep);
       position: relative;
     }
@@ -1266,7 +1331,7 @@
       top: -16px;
       right: 32px;
       background: var(--ink);
-      color: var(--tan);
+      color: var(--gold);
       padding: 8px 20px;
       border-radius: var(--radius-pill);
       font-size: 12px;
@@ -1542,18 +1607,18 @@
         <div class="card-stack" id="card-stack" role="group" aria-label="הצצה לקלפים — לחיצה תעבור לקלף הבא">
           <article class="preview-card" data-color="tan">
             <div class="preview-tag">📖 עבר</div>
-            <p class="preview-q">המשפחה שלך דיברה על כסף בילדות?</p>
-            <div class="preview-num">קלף 1 / 60</div>
+            <p class="preview-q">מה ילדים אחרים יכלו לעשות, ואתה לא, בגלל כסף?</p>
+            <div class="preview-num">קלף 07 / 60</div>
           </article>
           <article class="preview-card" data-color="sage">
             <div class="preview-tag">👁️ הווה</div>
-            <p class="preview-q">מה לא נותן לך לישון בלילה לגבי הכספים שלנו?</p>
-            <div class="preview-num">קלף 24 / 60</div>
+            <p class="preview-q">מהו הסוד הכספי שעדיין לא יצא לנו לדבר עליו בגלוי?</p>
+            <div class="preview-num">קלף 28 / 60</div>
           </article>
           <article class="preview-card" data-color="blue">
             <div class="preview-tag">🌅 עתיד</div>
-            <p class="preview-q">תאר לי את יום שלישי בבוקר שלך בעוד 5 שנים.</p>
-            <div class="preview-num">קלף 28 / 60</div>
+            <p class="preview-q">אם נוכל להעניק לילדים שיעור אחד על כסף, מה הוא יהיה?</p>
+            <div class="preview-num">קלף 51 / 60</div>
           </article>
         </div>
 
@@ -1586,7 +1651,7 @@
   <aside class="attribution" aria-label="קרדיט המוצר">
     <div class="wrap">
       <p class="attribution-text">
-        פותח על ידי <strong>ניר יפרח</strong> — מומחה לכלכלת המשפחה ומתכנן פיננסי CFP
+        פותח על ידי <strong>ניר יפרח</strong>, מומחה לכלכלת המשפחה ומתכנן פיננסי CFP
       </p>
     </div>
   </aside>
@@ -1605,7 +1670,7 @@
           </h2>
           <p class="section-lead">
             זה הנושא הכי כבד בבית.<br>
-            בכל פעם שמישהו מנסה לפתוח אותו — הוא נסגר בויכוח, בשתיקה, או ב„נדבר על זה אחר כך”.<br>
+            בכל פעם שמישהו מנסה לפתוח אותו, הוא נסגר בויכוח, בשתיקה, או ב„נדבר על זה אחר כך”.<br>
             לא בגלל שאתם לא בסדר.<br>
             בגלל שאף אחד לא לימד אתכם איך.
           </p>
@@ -1621,7 +1686,7 @@
             <p class="pain-after">לא ברור מה לשאול קודם.<br>אז לא שואלים בכלל.<br>וזה נדחה לעוד שבוע.</p>
           </article>
           <article class="pain-item">
-            <h3 class="pain-quote">„אנחנו מנהלים מיליונים — בלי לדבר”</h3>
+            <h3 class="pain-quote">„אנחנו מנהלים מיליונים. בלי לדבר”</h3>
             <p class="pain-after">משכנתא, פנסיה, חינוך, חסכונות.<br>עשור של החלטות שנעשו על אוטומט.<br>בלי ישיבה אחת.</p>
           </article>
         </div>
@@ -1635,18 +1700,18 @@
   <section class="bridge">
     <div class="wrap">
       <div class="bridge-head">
-        <span class="eyebrow">כאן נכנס המארז</span>
+        <span class="eyebrow">השיחה שבחרתם בה</span>
         <h2 class="bridge-title">
-          כל מה שרציתם לשאול.<br>
-          וגם מה שלא ידעתם <em>איך.</em>
+          רוב השיחות על כסף<br>
+          קורות <em>„על הדרך”.</em>
         </h2>
         <p class="bridge-lead">
-          זה לא על מספרים.<br>
-          לא על כמה נכנס.<br>
-          לא על כמה יוצא.<br>
-          זה על השיחה <strong>מאחורי</strong> המספרים.<br>
-          על כל מה שלא הצלחתם להגיד אחד לשני שנים.<br>
-          הקלפים שואלים בשבילכם — ומובילים אתכם לעומקים שלא הכרתם, בקצב שלכם.
+          מכוח החיים.<br>
+          מכוח סיטואציה שנקלענו אליה.<br>
+          מצב חירום, ויכוח, החלטה דחופה.<br>
+          עם פירוט האשראי ביד והרבה אשמה.<br><br>
+          <strong>מטרת הדייט הפיננסי</strong> היא לעזור לכם להגיע לשיחה החשובה הזאת ממקום של שליטה ולא מלחץ.<br>
+          ממקום חזק ולא „על הדרך”.
         </p>
       </div>
 
@@ -1668,7 +1733,7 @@
             </svg>
           </div>
           <h3 class="promise-title">עמוק</h3>
-          <p class="promise-text">כל קלף צולל לעוד שכבה. לא חקירה — סיפור.</p>
+          <p class="promise-text">כל קלף צולל לעוד שכבה. לא חקירה. סיפור.</p>
         </article>
 
         <article class="bridge-promise">
@@ -1693,7 +1758,7 @@
         <span class="eyebrow">המסע</span>
         <h2 class="section-title">3 פרקים. 60 שאלות. ערב אחד.</h2>
         <p class="section-lead">
-          חיפוש משותף אחר ה„למה” — שלך לבד, ושלכם ביחד.<br>
+          חיפוש משותף אחר ה„למה”, שלך לבד ושלכם ביחד.<br>
           הקלפים מובילים אתכם דרך מאיפה הגעתם, איפה אתם עומדים, ולאן אתם הולכים.
         </p>
       </div>
@@ -1713,7 +1778,7 @@
           <div class="chap-emoji" aria-hidden="true">👁️</div>
           <div class="chap-num">פרק 02</div>
           <h3 class="chap-title">איפה אנחנו עומדים?</h3>
-          <p class="chap-desc">המציאות שלכם, ההרגלים, הדינמיקה. מה עובד ומה לא — בלי שיפוטיות.</p>
+          <p class="chap-desc">המציאות שלכם, ההרגלים, הדינמיקה. מה עובד ומה לא, בלי שיפוטיות.</p>
           <span class="chap-count">20 קלפים</span>
         </article>
 
@@ -1738,20 +1803,17 @@
         <span class="eyebrow">הצצה לקלפים</span>
         <h2 class="section-title">3 שאלות אמיתיות מתוך 60.</h2>
         <p class="section-lead">
-          כל קלף מתחיל בשאלה.<br>
-          וממשיך עם שאלת עומק שמזמינה לרדת לשכבה הבאה.<br>
-          לא לחקור.<br>
-          לספר.
+          כל קלף מתחיל בשאלה וממשיך עם שאלת עומק שמזמינה לרדת לשכבה הבאה.
         </p>
       </div>
 
       <div class="samples-grid">
         <article class="sample-card">
           <div class="sample-tag">📖 עבר</div>
-          <p class="sample-q">מה היה הפחד הכלכלי הכי גדול של ההורים שלך — שירשת מבלי לשים לב?</p>
+          <p class="sample-q">מה היה הפחד הכלכלי הכי גדול של ההורים שלך, שירשת מבלי לשים לב?</p>
           <p class="sample-deep">
             <span class="deep-icon" aria-hidden="true">🔍</span>
-            ואם הפחד הזה היה נעלם מחר — מה היית עושה אחרת?
+            ואם הפחד הזה היה נעלם מחר, מה היית עושה אחרת?
           </p>
         </article>
 
@@ -1766,7 +1828,7 @@
 
         <article class="sample-card s3">
           <div class="sample-tag">🌅 עתיד</div>
-          <p class="sample-q">אם לא נשנה שום דבר בהתנהלות שלנו — איפה נמצא את עצמנו בעוד 10 שנים?</p>
+          <p class="sample-q">אם לא נשנה שום דבר בהתנהלות שלנו, איפה נמצא את עצמנו בעוד 10 שנים?</p>
           <p class="sample-deep">
             <span class="deep-icon" aria-hidden="true">🔍</span>
             ומה הצעד הראשון שאנחנו יכולים לעשות השבוע?
@@ -1783,8 +1845,8 @@
     <div class="wrap">
       <div class="box-head">
         <span class="eyebrow">מה במארז</span>
-        <h2>חבילה אחת.<br>ארבעה דברים.<br>ערב שלם.</h2>
-        <p>כל מה שצריך לערב הזה — מגיע אליכם הביתה ובמייל.<br>הכל מוכן.<br>רק לפתוח.</p>
+        <h2>חבילה אחת.<br>ארבעה דברים.</h2>
+        <p>כל מה שצריך לערב הזה, מגיע אליכם הביתה.</p>
       </div>
 
       <div class="box-grid">
@@ -1806,7 +1868,7 @@
             </svg>
           </div>
           <h3 class="box-title">60 קלפי שיחה</h3>
-          <p class="box-desc">קלפים מודפסים על נייר עבה — לפרוש על השולחן, לערבב, לשלוף. החוויה הפיזית של ערב.</p>
+          <p class="box-desc">קלפים מודפסים על נייר עבה. לפרוש על השולחן, לערבב, לשלוף. החוויה הפיזית של ערב.</p>
           <div class="box-meta">3 פרקים · 20 קלפים בכל אחד</div>
         </article>
 
@@ -1824,7 +1886,7 @@
             </svg>
           </div>
           <h3 class="box-title">בקבוק יין לבחירתכם</h3>
-          <p class="box-desc">לבן או אדום. כי דייט אמיתי מתחיל עם משהו לתת לו טעם — ולהוריד את ההגנות בעדינות.</p>
+          <p class="box-desc">לבן או אדום. כי דייט אמיתי מתחיל עם משהו לתת לו טעם, ולהוריד את ההגנות בעדינות.</p>
           <div class="box-meta">בחירה במעמד ההזמנה</div>
         </article>
 
@@ -1842,7 +1904,7 @@
             </svg>
           </div>
           <h3 class="box-title">פלייליסט מודרך</h3>
-          <p class="box-desc">לא רק מוזיקה — שילוב של שירים, הנחיה קצרה לפני כל פרק וטיפים בקול של ניר.</p>
+          <p class="box-desc">לא רק מוזיקה. שילוב של שירים, הנחיה קצרה לפני כל פרק וטיפים בקול של ניר.</p>
           <div class="box-meta">95 דקות · Spotify ו-Apple Music</div>
         </article>
 
@@ -1920,7 +1982,7 @@
           <p class="testimonial-text">
             קנינו את זה במקום עוד מסעדה ליום הנישואין.<br>
             בלילה כבר לא רצינו לעצור.<br>
-            למחרת בבוקר תכננו את 2026 לפי מה שאנחנו באמת רוצים — לא לפי מה שאנחנו „אמורים”.
+            למחרת בבוקר תכננו את 2026 לפי מה שאנחנו באמת רוצים. לא לפי מה שאנחנו „אמורים”.
           </p>
           <div class="testimonial-author">
             <div class="testimonial-avatar" aria-hidden="true">מ</div>
@@ -1944,7 +2006,7 @@
             בעלי לא דיבר על כסף.<br>
             אף פעם.<br>
             הקלף הראשון על הילדות פתח אצלו דלת שאני ניסיתי לפתוח 8 שנים.<br>
-            עכשיו יש לנו ערב כסף קבוע פעם בחודש — והוא זה שמזכיר לי.
+            עכשיו יש לנו ערב כסף קבוע פעם בחודש. והוא זה שמזכיר לי.
           </p>
           <div class="testimonial-author">
             <div class="testimonial-avatar" aria-hidden="true">ר</div>
@@ -1967,7 +2029,7 @@
       <div class="nir-grid">
         <div class="nir-photo">
           <div>
-            <img src="assets/nir.jpg" alt="ניר יפרח — מתכנן פיננסי CFP" class="nir-photo-img" loading="lazy">
+            <img src="assets/nir.jpg" alt="ניר יפרח, מתכנן פיננסי CFP" class="nir-photo-img" loading="lazy">
           </div>
           <div>
             <div class="nir-name">ניר יפרח</div>
@@ -1979,12 +2041,22 @@
           <span class="eyebrow">האיש מאחורי הקלפים</span>
           <p class="nir-quote">
             שיח על כסף הוא אף פעם לא רק על כסף.<br>
-            הוא תמיד על משהו אחר — על שליטה, על פחד, על אהבה, הרגלים.
+            הוא תמיד על משהו אחר. על שליטה, על פחד, על אמונות והרגלים.
           </p>
           <p class="nir-bio">
-            מלווה משפחות בגיל 30+ בתכנון פיננסי.<br>
-            הסיבה שלקוחות חוזרים אליי היא לא הטבלאות — אלא שאני משלב יעוץ זוגי, פסיכולוגיה וכלכלה באותה שיחה.<br>
-            כי מספרים הם תוצאה של פעולות.
+            מלווה משפחות לחשוב כמו עסק ולהתחיל לצמוח כלכלית מתוך תכנון.
+          </p>
+          <p class="nir-bio">
+            החיים זה לא טבלת אקסל.<br>
+            אבל האקסל מאפשר לנו לתכנן.<br>
+            כשאנחנו מתכננים, אנחנו חושבים.<br>
+            ואם אנחנו חושבים, אנחנו מדברים.<br>
+            כסף זה דבר די פשוט.<br>
+            אנשים הופכים אותו למורכב.
+          </p>
+          <p class="nir-bio">
+            המספרים שאתם רואים בחשבונות הבנק?<br>
+            הם רק תוצאה של פעולות והחלטות שקיבלנו.
           </p>
         </div>
       </div>
@@ -1997,14 +2069,11 @@
   <section class="cta-section" id="buy">
     <div class="wrap cta-inner">
       <h2 class="cta-title">
-        המארז שיעזור לכם לפתוח<br>
-        את השיחה שתמיד רציתם לעשות.
+        מזמינים עכשיו וקובעים<br>
+        תאריך לדייט.
       </h2>
-      <p class="cta-sub">מזמינים עכשיו וקובעים תאריך לדייט.</p>
 
       <div class="price-card">
-        <div class="price-launch">מחיר השקה</div>
-
         <div class="price-row">
           <div class="price-amount">179<span class="price-currency">₪</span></div>
           <div class="price-old">₪249</div>
@@ -2044,7 +2113,7 @@
           </summary>
           <div class="faq-answer">
             בין שעה לשעה וחצי.<br>
-            אפשר לעבור על כל 60 הקלפים בערב אחד מרוכז, או לפצל ל-3 ערבים — פרק לכל ערב.<br>
+            אפשר לעבור על כל 60 הקלפים בערב אחד מרוכז, או לפצל ל-3 ערבים. פרק לכל ערב.<br>
             שני המסלולים עובדים.
           </div>
         </details>
@@ -2058,7 +2127,7 @@
             תתחילו בקלף הראשון בלבד.<br>
             שאלה אחת.<br>
             תראו לאן זה הולך.<br>
-            ברוב המקרים — הקלף השני מגיע מעצמו.
+            ברוב המקרים, הקלף השני מגיע מעצמו.
           </div>
         </details>
 
@@ -2080,9 +2149,8 @@
             <span class="faq-icon" aria-hidden="true">+</span>
           </summary>
           <div class="faq-answer">
-            המארז הפיזי — קלפים, יין, ומדריך מודפס — נשלח אליכם הביתה תוך 3-5 ימי עסקים.<br>
-            עלות משלוח: ₪20.<br>
-            הגישה הדיגיטלית לפלייליסט המודרך וצידה לדרך מגיעה במייל מיד אחרי ההזמנה.
+            המארז כולו (קלפים, בקבוק יין, פלייליסט המודרך דרך QR בקופסה, וצידה לדרך) נשלח אליכם הביתה תוך 3-5 ימי עסקים.<br>
+            עלות משלוח: ₪20.
           </div>
         </details>
 
@@ -2093,11 +2161,11 @@
           </summary>
           <div class="faq-answer">
             שאלה טובה.<br>
-            זה תלוי הרבה בדינאמיקה שלכם — ובפתיחות שכל אחד מכם מביא לערב.<br>
+            זה תלוי הרבה בדינאמיקה שלכם, ובפתיחות שכל אחד מכם מביא לערב.<br>
             הקלפים לא עושים פלא.<br>
             הם פותחים דלת.<br>
             אתם מי שעוברים בה.<br>
-            מה שאני מבטיח: אם הרגשתם שזה לא בשבילכם — תכתבו לי במייל תוך 14 יום, ואני מחזיר את הכסף.<br>
+            מה שאני מבטיח: אם הרגשתם שזה לא בשבילכם, תכתבו לי במייל תוך 14 יום ואני מחזיר את הכסף.<br>
             בלי שאלות.
           </div>
         </details>

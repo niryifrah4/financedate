@@ -14,35 +14,44 @@
        BRAND TOKENS — same as landing
        ═══════════════════════════════════════════════ */
     :root {
-      --forest:       #1F4D2D;
-      --forest-deep:  #163823;
-      --forest-soft:  #B5C6B8;
-      --forest-mist:  #DDE6DE;
+      /* פלטת המותג — Date Edition */
+      --salmon:       #BF897F;
+      --salmon-deep:  #9C6B61;
+      --salmon-soft:  #E0BAB1;
+      --sandstone:    #DAC2B2;
+      --pearl:        #F7F2E0;
+      --olive:        #707B6D;
+      --pewter:       #3A3D3A;
 
-      --sage:         #7A8854;
-      --sage-deep:    #1F4D2D;
-      --sage-soft:    #C8D2B3;
-      --sage-mist:    #E5EAD8;
+      --sunshine:     #BF897F;
+      --wood:         #9C6B61;
+      --forest:       #3A3D3A;
+      --sand:         #F7F2E0;
 
-      --tan:          #C5B095;
-      --tan-deep:     #A99479;
-      --tan-soft:     #E2D4BD;
-      --tan-mist:     #ECE0CB;
+      --sage:         #707B6D;
+      --sage-deep:    #3A3D3A;
+      --sage-soft:    #C4CCC0;
+      --sage-mist:    #E0E4DD;
 
-      --blue:         #A0AEBA;
-      --blue-deep:    #7A8B98;
-      --blue-soft:    #D4DBE0;
-      --blue-mist:    #E8ECEF;
+      --tan:          #DAC2B2;
+      --tan-deep:     #BF897F;
+      --tan-soft:     #EBD8CB;
+      --tan-mist:     #F4EAE0;
 
-      --cream:        #FBF7EE;
-      --cream-2:      #F4EDDB;
+      --blue:         #A3ADA0;
+      --blue-deep:    #707B6D;
+      --blue-soft:    #C4CCC0;
+      --blue-mist:    #E0E4DD;
+
+      --cream:        #F7F2E0;
+      --cream-2:      #EBD8CB;
       --paper:        #FFFFFF;
 
-      --ink:          #1F4D2D;
-      --ink-mid:      #4A6650;
-      --ink-soft:     #788A7C;
-      --ink-faint:    #A8B5A9;
-      --line:         #D8CBB1;
+      --ink:          #3A3D3A;
+      --ink-mid:      #707B6D;
+      --ink-soft:     #909A8D;
+      --ink-faint:    #BCC3B9;
+      --line:         #DDD5C8;
 
       --error:        #B84B2C;
       --success:      #5F6B41;
@@ -204,8 +213,8 @@
     .step-num {
       width: 28px;
       height: 28px;
-      background: var(--sage);
-      color: var(--paper);
+      background: var(--forest);
+      color: var(--sand);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -248,12 +257,12 @@
       background: var(--tan-mist);
     }
     .wine-card input:checked + .wine-label {
-      border-color: var(--sage);
-      background: var(--sage-mist);
-      box-shadow: 0 0 0 3px rgba(122, 136, 84, 0.18);
+      border-color: var(--sunshine);
+      background: var(--tan-soft);
+      box-shadow: 0 0 0 3px rgba(225, 177, 36, 0.20);
     }
     .wine-card input:focus-visible + .wine-label {
-      outline: 3px solid var(--sage);
+      outline: 3px solid var(--sunshine);
       outline-offset: 2px;
     }
     .wine-icon {
@@ -327,9 +336,9 @@
     .field input:focus,
     .field textarea:focus {
       outline: none;
-      border-color: var(--sage);
+      border-color: var(--sunshine);
       background: var(--paper);
-      box-shadow: 0 0 0 3px rgba(122, 136, 84, 0.16);
+      box-shadow: 0 0 0 3px rgba(225, 177, 36, 0.20);
     }
     .field textarea {
       resize: vertical;
@@ -390,8 +399,8 @@
       align-items: center;
     }
     .launch-tag {
-      background: var(--ink);
-      color: var(--tan);
+      background: var(--forest);
+      color: var(--sunshine);
       padding: 5px 12px;
       border-radius: var(--radius-pill);
       font-size: 11px;
@@ -475,15 +484,15 @@
 
     .submit-btn {
       width: 100%;
-      background: var(--sage);
-      color: var(--paper);
+      background: var(--sunshine);
+      color: var(--forest);
       padding: 18px 24px;
       border-radius: var(--radius-pill);
       font-weight: 800;
       font-size: 17px;
       cursor: pointer;
-      transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
-      box-shadow: 0 8px 24px rgba(122, 136, 84, 0.30);
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+      box-shadow: 0 8px 24px rgba(225, 177, 36, 0.32);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -491,12 +500,13 @@
       margin-top: 8px;
     }
     .submit-btn:hover:not(:disabled) {
-      background: var(--sage-deep);
+      background: var(--wood);
+      color: var(--sand);
       transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(122, 136, 84, 0.40);
+      box-shadow: 0 12px 28px rgba(129, 102, 69, 0.40);
     }
     .submit-btn:focus-visible {
-      outline: 3px solid var(--sage-deep);
+      outline: 3px solid var(--forest);
       outline-offset: 3px;
     }
     .submit-btn:disabled {
@@ -536,14 +546,14 @@
        FOOTER
        ═══════════════════════════════════════════════ */
     .checkout-footer {
-      background: var(--ink);
-      color: var(--tan-soft);
+      background: var(--forest);
+      color: var(--sand);
       padding: 32px 0;
       text-align: center;
       font-size: 13px;
     }
     .checkout-footer a {
-      color: var(--tan);
+      color: var(--sunshine);
       font-weight: 600;
     }
 
@@ -610,7 +620,7 @@
        ═══════════════════════════════════════════════ -->
   <main class="checkout-main">
     <h1 class="checkout-title">סיום הזמנה</h1>
-    <p class="checkout-subtitle">עוד 4 שלבים — והמארז בדרך אליכם הביתה.</p>
+    <p class="checkout-subtitle">עוד 4 שלבים, והמארז בדרך אליכם הביתה.</p>
 
     <div class="checkout-grid">
 
@@ -737,7 +747,7 @@
         <ul class="summary-items">
           <li class="summary-item">
             <span class="summary-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#A99479" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#816645" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="6" width="13" height="16" rx="2"></rect>
                 <path d="M7 2h13a2 2 0 0 1 2 2v13"></path>
               </svg>
@@ -747,7 +757,7 @@
 
           <li class="summary-item">
             <span class="summary-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#5F6B41" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5C765E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M8 2h8v6a4 4 0 0 1-4 4 4 4 0 0 1-4-4V2z"></path>
                 <line x1="12" y1="12" x2="12" y2="22"></line>
                 <line x1="8" y1="22" x2="16" y2="22"></line>
@@ -761,7 +771,7 @@
 
           <li class="summary-item">
             <span class="summary-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#7A8B98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#83918F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 18V5l12-2v13"></path>
                 <circle cx="6" cy="18" r="3"></circle>
                 <circle cx="18" cy="16" r="3"></circle>
@@ -772,7 +782,7 @@
 
           <li class="summary-item">
             <span class="summary-item-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#5A554A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#223924" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
               </svg>
