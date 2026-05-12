@@ -210,6 +210,74 @@
     .btn:hover .arrow { transform: translateX(-4px); }
 
     /* ═══════════════════════════════════════════════
+       STICKY CTA — floating across the page
+       ═══════════════════════════════════════════════ */
+    .sticky-cta {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--ink);
+      color: var(--pearl);
+      padding: 10px 10px 10px 22px;
+      border-radius: 100px;
+      box-shadow: 0 16px 40px rgba(58, 61, 58, 0.32);
+      z-index: 60;
+      opacity: 0;
+      transition: opacity 320ms var(--ease), transform 320ms var(--ease), background var(--dur) var(--ease);
+      pointer-events: none;
+      text-decoration: none;
+      max-width: calc(100vw - 32px);
+    }
+    .sticky-cta.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+    .sticky-cta:hover { background: var(--pewter); }
+    .sticky-cta-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--pearl);
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+    .sticky-cta-text strong {
+      color: var(--salmon-soft);
+      font-weight: 800;
+    }
+    .sticky-cta-btn {
+      background: var(--salmon);
+      color: var(--pearl);
+      padding: 9px 20px;
+      border-radius: 100px;
+      font-weight: 800;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .sticky-cta:hover .sticky-cta-btn {
+      background: var(--pearl);
+      color: var(--ink);
+    }
+    .sticky-cta-btn svg { width: 14px; height: 14px; }
+    @media (max-width: 480px) {
+      .sticky-cta {
+        bottom: 14px;
+        padding: 8px 8px 8px 16px;
+        gap: 10px;
+      }
+      .sticky-cta-text { font-size: 13px; }
+      .sticky-cta-text .price-prefix { display: none; }
+      .sticky-cta-btn { padding: 8px 14px; font-size: 13px; }
+    }
+
+    /* ═══════════════════════════════════════════════
        NAV
        ═══════════════════════════════════════════════ */
     nav {
@@ -758,63 +826,48 @@
       border-radius: 3px;
     }
     .bridge-lead {
-      font-size: clamp(17px, 1.6vw, 20px);
+      font-size: clamp(15px, 1.4vw, 17px);
       color: var(--ink-mid);
-      line-height: 1.7;
-      max-width: 680px;
+      line-height: 1.75;
+      max-width: 580px;
       margin: 0 auto;
+    }
+    .bridge-lead + .bridge-lead {
+      margin-top: 16px;
     }
     .bridge-lead strong {
       color: var(--ink);
-      font-weight: 800;
+      font-weight: 700;
     }
 
-    .bridge-promises {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 940px;
-      margin: 0 auto;
-    }
-    .bridge-promise {
-      background: var(--paper);
-      padding: 36px 28px;
-      border-radius: var(--radius-lg);
-      text-align: center;
-      box-shadow: var(--shadow-soft);
-      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-    }
-    .bridge-promise:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-card);
-    }
-    .promise-icon {
-      width: 56px;
-      height: 56px;
-      margin: 0 auto 22px;
-      display: flex;
+    .bridge-pills {
+      display: inline-flex;
       align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
       justify-content: center;
-      background: var(--forest);
-      color: var(--sand);
-      border-radius: 50%;
-    }
-    .bridge-promise:nth-child(2) .promise-icon { background: var(--leaf); color: var(--sand); }
-    .bridge-promise:nth-child(3) .promise-icon { background: var(--wood); color: var(--sand); }
-    .promise-icon svg { width: 26px; height: 26px; display: block; }
-
-    .promise-title {
-      font-size: 20px;
-      font-weight: 900;
+      margin-top: 32px;
+      font-size: 14px;
+      font-weight: 700;
       color: var(--ink);
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
+      letter-spacing: 0.2px;
     }
-    .promise-text {
-      font-size: 15px;
-      color: var(--ink-mid);
-      line-height: 1.6;
+    .bridge-pills .pill-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.55);
+      border-radius: 100px;
     }
+    .bridge-pills svg {
+      width: 14px;
+      height: 14px;
+      color: var(--salmon-deep);
+      flex-shrink: 0;
+    }
+    .bridge-pills .pill-item:nth-child(2) svg { color: var(--leaf); }
+    .bridge-pills .pill-item:nth-child(3) svg { color: var(--wood); }
 
     /* ═══════════════════════════════════════════════
        JOURNEY (3 chapters)
@@ -1105,6 +1158,84 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
+    }
+
+    /* Carousel */
+    .testimonials-carousel {
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .testimonials-track-wrap {
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+    }
+    .testimonials-track {
+      display: flex;
+      transition: transform 480ms var(--ease);
+      will-change: transform;
+    }
+    .testimonials-carousel .testimonial {
+      flex: 0 0 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .carousel-btn:hover {
+      background: var(--ink);
+      color: var(--pearl);
+      border-color: var(--ink);
+    }
+    .carousel-btn:focus-visible {
+      outline: 3px solid var(--salmon);
+      outline-offset: 3px;
+    }
+    .carousel-btn svg { width: 14px; height: 14px; }
+
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .t-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      padding: 0;
+      cursor: pointer;
+      transition: background var(--dur) var(--ease), transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+    .t-dot:hover { background: var(--salmon-soft); }
+    .t-dot.active {
+      background: var(--salmon-deep);
+      border-color: var(--salmon-deep);
+      transform: scale(1.3);
+    }
+    .t-dot:focus-visible {
+      outline: 3px solid var(--salmon);
+      outline-offset: 3px;
     }
     .testimonial {
       background: var(--paper);
@@ -1582,6 +1713,15 @@
 </head>
 <body>
 
+  <!-- Sticky floating CTA — visible across the entire page after hero -->
+  <a href="https://stage.hyp.co.il/standalone.html#/public?sp_uuid=a02db515-68a4-4795-ab78-2fee3e4b5266&id=12326" target="_blank" rel="noopener" class="sticky-cta" id="sticky-cta" aria-label="להזמין מארז דייט פיננסי ב-199 שקלים">
+    <span class="sticky-cta-text"><span class="price-prefix">דייט פיננסי · </span><strong>₪199</strong></span>
+    <span class="sticky-cta-btn">
+      להזמין עכשיו
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    </span>
+  </a>
+
   <!-- ═══════════════════════════════════════════════
        NAVIGATION
        ═══════════════════════════════════════════════ -->
@@ -1711,7 +1851,7 @@
 
         <div class="pain-list">
           <article class="pain-item">
-            <h3 class="pain-quote">„בא לי לדבר איתך על כסף”</h3>
+            <h3 class="pain-quote">„אני רוצה לדבר על הנושאים הפיננסיים בבית”</h3>
             <p class="pain-after">המשפט הזה נשמע כמו אזעקה.<br>לא כמו שיחה.<br>שניכם נדרכים לפני שאמרתם מילה.</p>
           </article>
           <article class="pain-item">
@@ -1739,45 +1879,26 @@
           קורות <em>„על הדרך”.</em>
         </h2>
         <p class="bridge-lead">
-          מכוח החיים.<br>
-          מכוח סיטואציה שנקלענו אליה.<br>
-          מצב חירום, ויכוח, החלטה דחופה.<br>
-          עם פירוט האשראי ביד והרבה אשמה.<br><br>
-          <strong>מטרת הדייט הפיננסי</strong> היא לעזור לכם להגיע לשיחה החשובה הזאת ממקום של שליטה ולא מלחץ.<br>
-          ממקום חזק ולא „על הדרך”.
+          מכוח החיים, מכוח סיטואציה שנקלענו אליה. מצב חירום, ויכוח, החלטה דחופה. עם פירוט האשראי ביד והרבה אשמה.
+        </p>
+        <p class="bridge-lead">
+          <strong>מטרת הדייט הפיננסי</strong> היא לעזור לכם להגיע לשיחה החשובה הזאת ממקום של שליטה, לא מלחץ. ממקום חזק, לא „על הדרך”.
         </p>
       </div>
 
-      <div class="bridge-promises">
-        <article class="bridge-promise">
-          <div class="promise-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          </div>
-          <h3 class="promise-title">נגיש</h3>
-          <p class="promise-text">אין צורך לדעת מאיפה מתחילים. הקלף הראשון יודע.</p>
-        </article>
-
-        <article class="bridge-promise">
-          <div class="promise-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          </div>
-          <h3 class="promise-title">עמוק</h3>
-          <p class="promise-text">כל קלף צולל לעוד שכבה. לא חקירה. סיפור.</p>
-        </article>
-
-        <article class="bridge-promise">
-          <div class="promise-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          </div>
-          <h3 class="promise-title">בטוח</h3>
-          <p class="promise-text">בלי מומחים, בלי ויכוח. רק שני אנשים שמספרים.</p>
-        </article>
+      <div class="bridge-pills">
+        <span class="pill-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          נגיש
+        </span>
+        <span class="pill-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          עמוק
+        </span>
+        <span class="pill-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          בטוח
+        </span>
       </div>
     </div>
   </section>
@@ -1973,83 +2094,173 @@
         <span class="eyebrow">זוגות שכבר עשו את הערב</span>
         <h2 class="section-title testimonials-title">„חשבנו שאנחנו מדברים על כסף.”</h2>
         <p class="section-lead">
-          שלושה זוגות, שלוש שיחות, שלושה רגעי הבנה שלא יכלו לקרות בלי המארז.
+          6 זוגות שהמארז שינה להם את החיים.
         </p>
       </div>
 
-      <div class="testimonials-grid">
+      <div class="testimonials-carousel">
+        <div class="testimonials-track-wrap">
+        <div class="testimonials-track" id="testimonials-track">
 
-        <article class="testimonial">
-          <div class="testimonial-quote-mark" aria-hidden="true">“</div>
-          <div class="testimonial-stars" aria-label="חמישה כוכבים">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-          </div>
-          <p class="testimonial-text">
-            חשבנו שאנחנו מדברים על הכל.<br>
-            הקלף השני בפרק „עבר” גרם לי לבכות.<br>
-            לא ידעתי מה יובל חושב על העזרה שאבא שלי נותן לנו עם המשכנתא.<br>
-            עכשיו אני יודעת.
-          </p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" aria-hidden="true">ש</div>
-            <div class="testimonial-meta">
-              <span class="testimonial-name">שירי ויובל</span>
-              <span class="testimonial-context">נשואים 7 שנים · ראשון לציון</span>
+          <article class="testimonial">
+            <div class="testimonial-quote-mark" aria-hidden="true">“</div>
+            <div class="testimonial-stars" aria-label="חמישה כוכבים">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
             </div>
-          </div>
-        </article>
-
-        <article class="testimonial t2">
-          <div class="testimonial-quote-mark" aria-hidden="true">“</div>
-          <div class="testimonial-stars" aria-label="חמישה כוכבים">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-          </div>
-          <p class="testimonial-text">
-            קנינו את זה במקום עוד מסעדה ליום הנישואין.<br>
-            בלילה כבר לא רצינו לעצור.<br>
-            למחרת בבוקר תכננו את 2026 לפי מה שאנחנו באמת רוצים. לא לפי מה שאנחנו „אמורים”.
-          </p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" aria-hidden="true">מ</div>
-            <div class="testimonial-meta">
-              <span class="testimonial-name">מיכל ועמית</span>
-              <span class="testimonial-context">יחד 11 שנה · מודיעין</span>
+            <p class="testimonial-text">
+              היינו בטוחים שאנחנו זוג שמדבר על הכל.<br>
+              הקלף השני בפרק „עבר” עצר אותי.<br>
+              לא ידעתי מה יובל באמת חושב על העזרה הכספית שאבא שלי נותן לנו עם המשכנתא.<br>
+              היום אני יודעת, וזה שינה את כל המבט שלי על הזוגיות.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">ש</div>
+              <div class="testimonial-meta">
+                <span class="testimonial-name">שירי ויובל</span>
+                <span class="testimonial-context">נשואים 7 שנים · ראשון לציון</span>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="testimonial t3">
-          <div class="testimonial-quote-mark" aria-hidden="true">“</div>
-          <div class="testimonial-stars" aria-label="חמישה כוכבים">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
-          </div>
-          <p class="testimonial-text">
-            בעלי לא דיבר על כסף.<br>
-            אף פעם.<br>
-            הקלף הראשון על הילדות פתח אצלו דלת שאני ניסיתי לפתוח 8 שנים.<br>
-            עכשיו יש לנו ערב כסף קבוע פעם בחודש. והוא זה שמזכיר לי.
-          </p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" aria-hidden="true">ר</div>
-            <div class="testimonial-meta">
-              <span class="testimonial-name">רינת ואיתי</span>
-              <span class="testimonial-context">נשואים 9 שנים · גבעתיים</span>
+          <article class="testimonial t2">
+            <div class="testimonial-quote-mark" aria-hidden="true">“</div>
+            <div class="testimonial-stars" aria-label="חמישה כוכבים">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
             </div>
-          </div>
-        </article>
+            <p class="testimonial-text">
+              קנינו את זה במקום עוד מסעדה ליום הנישואין.<br>
+              בלילה כבר לא רצינו לעצור.<br>
+              למחרת בבוקר תכננו את 2026 לפי מה שאנחנו באמת רוצים. לא לפי מה שאנחנו „אמורים”.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">מ</div>
+              <div class="testimonial-meta">
+                <span class="testimonial-name">מיכל ועמית</span>
+                <span class="testimonial-context">יחד 11 שנה · מודיעין</span>
+              </div>
+            </div>
+          </article>
 
+          <article class="testimonial t3">
+            <div class="testimonial-quote-mark" aria-hidden="true">“</div>
+            <div class="testimonial-stars" aria-label="חמישה כוכבים">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            </div>
+            <p class="testimonial-text">
+              בעלי לא דיבר על כסף. אף פעם.<br>
+              הקלף הראשון על הילדות פתח אצלו דלת שאני ניסיתי לפתוח 8 שנים.<br>
+              עכשיו יש לנו ערב כסף קבוע פעם בחודש. והוא זה שמזכיר לי.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">ר</div>
+              <div class="testimonial-meta">
+                <span class="testimonial-name">רינת ואיתי</span>
+                <span class="testimonial-context">נשואים 9 שנים · גבעתיים</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial">
+            <div class="testimonial-quote-mark" aria-hidden="true">“</div>
+            <div class="testimonial-stars" aria-label="חמישה כוכבים">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            </div>
+            <p class="testimonial-text">
+              אנחנו זוג של „אחר כך”. כל פעם שהנושא היה עולה, היינו דוחים.<br>
+              המארז הזה הכריח אותנו לקבוע ערב, לפתוח בקבוק ופשוט לדבר.<br>
+              שעתיים אחרי, היה לנו את הדיון הכי כן שהיה לנו ב-12 שנים.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">ש</div>
+              <div class="testimonial-meta">
+                <span class="testimonial-name">שני ועומר</span>
+                <span class="testimonial-context">נשואים 12 שנה · חולון</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial t2">
+            <div class="testimonial-quote-mark" aria-hidden="true">“</div>
+            <div class="testimonial-stars" aria-label="חמישה כוכבים">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            </div>
+            <p class="testimonial-text">
+              הופתעתי לגלות שדניאל חושב בדיוק כמוני על תכנון הפנסיה.<br>
+              שנים חששנו לדבר על זה, כל אחד חשב שהשני יתנגד.<br>
+              הקלפים נתנו לנו מנגנון שיחה. אנחנו עכשיו מדברים גם בלי המארז.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">ה</div>
+              <div class="testimonial-meta">
+                <span class="testimonial-name">הילה ודניאל</span>
+                <span class="testimonial-context">נשואים 6 שנים · רעננה</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial t3">
+            <div class="testimonial-quote-mark" aria-hidden="true">“</div>
+            <div class="testimonial-stars" aria-label="חמישה כוכבים">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9 9 9"/></svg>
+            </div>
+            <p class="testimonial-text">
+              קנינו בלי לצפות ליותר מדי. סקרנות גרידא.<br>
+              הערב היה אחר.<br>
+              למחרת פתחתי גיליון תקציב חדש, ויואב הצטרף בלי שביקשתי.<br>
+              עכשיו יש לנו „ארוחת בוקר תכנון” פעם בחודש.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">מ</div>
+              <div class="testimonial-meta">
+                <span class="testimonial-name">מאיה ויואב</span>
+                <span class="testimonial-context">יחד 5 שנים · חיפה</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button type="button" class="carousel-btn" data-action="prev" aria-label="המלצה קודמת">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="carousel-dots" role="tablist">
+            <button type="button" class="t-dot active" data-i="0" aria-label="המלצה 1"></button>
+            <button type="button" class="t-dot" data-i="1" aria-label="המלצה 2"></button>
+            <button type="button" class="t-dot" data-i="2" aria-label="המלצה 3"></button>
+            <button type="button" class="t-dot" data-i="3" aria-label="המלצה 4"></button>
+            <button type="button" class="t-dot" data-i="4" aria-label="המלצה 5"></button>
+            <button type="button" class="t-dot" data-i="5" aria-label="המלצה 6"></button>
+          </div>
+          <button type="button" class="carousel-btn" data-action="next" aria-label="המלצה הבאה">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -2295,6 +2506,81 @@
 
       // Initial state
       setActive(0);
+    })();
+
+    // Testimonials carousel
+    (function() {
+      const track = document.getElementById('testimonials-track');
+      if (!track) return;
+
+      const slides = Array.from(track.querySelectorAll('.testimonial'));
+      const dots = Array.from(document.querySelectorAll('.carousel-dots .t-dot'));
+      let idx = 0;
+
+      function go(i) {
+        idx = ((i % slides.length) + slides.length) % slides.length;
+        // RTL: positive translateX brings next items into view
+        track.style.transform = 'translateX(' + (idx * 100) + '%)';
+        dots.forEach((d, n) => {
+          const active = n === idx;
+          d.classList.toggle('active', active);
+          d.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+      }
+
+      document.querySelectorAll('.carousel-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          go(idx + (btn.dataset.action === 'next' ? 1 : -1));
+        });
+      });
+      dots.forEach((d, n) => d.addEventListener('click', () => go(n)));
+
+      // Touch swipe
+      let startX = 0;
+      track.parentElement.addEventListener('touchstart', e => {
+        startX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      track.parentElement.addEventListener('touchend', e => {
+        const diff = e.changedTouches[0].screenX - startX;
+        if (Math.abs(diff) > 40) {
+          // RTL: swipe right (positive) = next, swipe left (negative) = prev
+          go(idx + (diff > 0 ? 1 : -1));
+        }
+      }, { passive: true });
+
+      go(0);
+    })();
+
+    // Sticky CTA — show after hero, hide when CTA section in view
+    (function() {
+      const cta = document.getElementById('sticky-cta');
+      if (!cta) return;
+      const hero = document.querySelector('.hero');
+      const ctaSection = document.getElementById('buy');
+      const footer = document.querySelector('footer');
+
+      function check() {
+        const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+        const buySectionTop = ctaSection ? ctaSection.getBoundingClientRect().top : Infinity;
+        const footerTop = footer ? footer.getBoundingClientRect().top : Infinity;
+        const vh = window.innerHeight;
+
+        // Show: after hero is mostly scrolled past
+        // Hide: when the main CTA section or footer is on screen
+        const pastHero = heroBottom < 80;
+        const buyVisible = buySectionTop < vh - 80;
+        const footerVisible = footerTop < vh - 80;
+
+        if (pastHero && !buyVisible && !footerVisible) {
+          cta.classList.add('visible');
+        } else {
+          cta.classList.remove('visible');
+        }
+      }
+
+      window.addEventListener('scroll', check, { passive: true });
+      window.addEventListener('resize', check);
+      check();
     })();
   </script>
 
