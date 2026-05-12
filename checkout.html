@@ -632,67 +632,21 @@
 
     <div class="checkout-grid">
 
-      <!-- ─── WINE + PAYMENT ─── -->
+      <!-- ─── PAYMENT (Hyp embedded — wine choice handled inside Hyp form) ─── -->
       <div class="form-wrapper">
-
-        <!-- Step 1: Wine choice -->
-        <fieldset class="form-section">
-          <legend><span class="step-num">1</span> בחירת יין</legend>
-
-          <div class="wine-options">
-            <label class="wine-card">
-              <input type="radio" name="wine" value="red" required checked>
-              <span class="wine-label">
-                <span class="wine-icon">
-                  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="13" y="2" width="6" height="3" rx="0.5" fill="#3A2820"/>
-                    <rect x="13.5" y="5" width="5" height="6" fill="#5C4435"/>
-                    <path d="M11 14 Q11 12 13.5 11.5 L18.5 11.5 Q21 12 21 14 L21 28 Q21 30 19 30 L13 30 Q11 30 11 28 Z" fill="#5C4435"/>
-                    <rect x="13" y="19" width="6" height="6" rx="0.8" fill="#F2DED5"/>
-                  </svg>
-                </span>
-                <span class="wine-name">אדום</span>
-                <span class="wine-desc">קברנה / מרלו</span>
-              </span>
-            </label>
-
-            <label class="wine-card">
-              <input type="radio" name="wine" value="white">
-              <span class="wine-label">
-                <span class="wine-icon">
-                  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="13" y="2" width="6" height="3" rx="0.5" fill="#707B6D"/>
-                    <rect x="13.5" y="5" width="5" height="6" fill="#A3ADA0"/>
-                    <path d="M11 14 Q11 12 13.5 11.5 L18.5 11.5 Q21 12 21 14 L21 28 Q21 30 19 30 L13 30 Q11 30 11 28 Z" fill="#C4CCC0"/>
-                    <rect x="13" y="19" width="6" height="6" rx="0.8" fill="#FFFFFF"/>
-                  </svg>
-                </span>
-                <span class="wine-name">לבן</span>
-                <span class="wine-desc">סוביניון / שרדונה</span>
-              </span>
-            </label>
+        <div class="payment-iframe-wrap">
+          <div class="payment-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>תשלום מאובטח · SSL · ₪199 כל-כלול</span>
           </div>
-        </fieldset>
-
-        <!-- Step 2: Payment iframe -->
-        <fieldset class="form-section">
-          <legend><span class="step-num">2</span> פרטים ותשלום</legend>
-
-          <div class="payment-iframe-wrap">
-            <div class="payment-note">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              <span>תשלום מאובטח · בחרתם: <strong class="js-wine-display">יין אדום</strong> · אנא ציינו זאת בשדה ההערות בטופס</span>
-            </div>
-            <iframe
-              src="https://stage.hyp.co.il/standalone.html#/public?sp_uuid=b9fcced2-9152-4721-b578-b94de11e14c7&id=12330"
-              class="payment-iframe"
-              title="טופס הזמנה ותשלום מאובטח"
-              loading="lazy"
-              allow="payment">
-            </iframe>
-          </div>
-        </fieldset>
-
+          <iframe
+            src="https://stage.hyp.co.il/standalone.html#/public?sp_uuid=b9fcced2-9152-4721-b578-b94de11e14c7&id=12330"
+            class="payment-iframe"
+            title="טופס הזמנה ותשלום מאובטח"
+            loading="lazy"
+            allow="payment">
+          </iframe>
+        </div>
       </div>
 
       <!-- ─── ORDER SUMMARY ─── -->
@@ -804,22 +758,11 @@
   </footer>
 
   <script>
-    // Update wine display everywhere when selection changes
+    // Wine selection is now handled inside Hyp's form
     (function() {
-      const wineRadios = document.querySelectorAll('input[name="wine"]');
-      const displaysLong = document.querySelectorAll('.js-wine-display');
-      const displaysShort = document.querySelectorAll('.js-wine-display-short');
-
-      function updateWine() {
-        const selected = document.querySelector('input[name="wine"]:checked');
-        if (!selected) return;
-        const isRed = selected.value === 'red';
-        displaysLong.forEach(el => el.textContent = isRed ? 'יין אדום' : 'יין לבן');
-        displaysShort.forEach(el => el.textContent = isRed ? 'אדום' : 'לבן');
-      }
-
-      wineRadios.forEach(r => r.addEventListener('change', updateWine));
-      updateWine();
+      // Static text in summary — wine will be selected on Hyp's side
+      const summary = document.querySelector('.js-wine-display-short');
+      if (summary) summary.textContent = 'בחירה בטופס';
     })();
   </script>
 
