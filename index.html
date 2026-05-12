@@ -111,12 +111,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
     body {
       font-family: 'Heebo', -apple-system, sans-serif;
       background: var(--cream);
       color: var(--ink);
-      line-height: 1.65;
-      font-size: 17px;
+      line-height: 1.55;
+      font-size: 16px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
@@ -267,7 +271,7 @@
        HERO
        ═══════════════════════════════════════════════ */
     .hero {
-      padding: 72px 0 56px;
+      padding: 56px 0 48px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -302,11 +306,11 @@
       gap: 10px;
       background: var(--paper);
       color: var(--ink);
-      padding: 10px 20px;
+      padding: 8px 18px;
       border-radius: var(--radius-pill);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      margin-bottom: 36px;
+      margin-bottom: 24px;
       box-shadow: var(--shadow-soft);
       border: 1px solid var(--line);
     }
@@ -319,12 +323,12 @@
     }
 
     h1.hero-title {
-      font-size: clamp(2.4rem, 6.8vw, 6rem);
+      font-size: clamp(2.2rem, 5.8vw, 5rem);
       font-weight: 900;
       letter-spacing: -0.035em;
       line-height: 1;
       color: var(--ink);
-      margin-bottom: 36px;
+      margin-bottom: 24px;
       max-width: 14ch;
       margin-inline: auto;
     }
@@ -349,14 +353,14 @@
     /* HERO PROMISE — the items list + the BIG punchline */
     .hero-promise {
       max-width: 760px;
-      margin: 0 auto 44px;
+      margin: 0 auto 32px;
     }
     .promise-items {
-      font-size: clamp(14px, 1.3vw, 16px);
+      font-size: clamp(13px, 1.2vw, 15px);
       font-weight: 600;
       color: var(--ink-mid);
       line-height: 1.4;
-      margin-bottom: 22px;
+      margin-bottom: 14px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -371,7 +375,7 @@
       opacity: 0.6;
     }
     .promise-line {
-      font-size: clamp(20px, 2.6vw, 30px);
+      font-size: clamp(18px, 2.2vw, 26px);
       font-weight: 800;
       color: var(--ink);
       line-height: 1.3;
@@ -610,22 +614,52 @@
     /* ═══════════════════════════════════════════════
        SECTION GENERIC
        ═══════════════════════════════════════════════ */
-    section.block { padding: 96px 0; }
-    /* Tinted class kept for HTML semantics, but visually unified for continuity */
+    section.block { padding: 72px 0; }
     section.block.tinted { background: transparent; }
 
+    /* Section background palettes — Date Edition */
+    .bg-pink { background: var(--past); }
+    .bg-sand { background: var(--present); }
+    .bg-olive { background: var(--future); }
+
+    /* Cards inside colored sections become white for max contrast */
+    .bg-pink .pain-item,
+    .bg-sand .pain-item,
+    .bg-olive .pain-item,
+    .bg-pink .pain-item:nth-child(2),
+    .bg-pink .pain-item:nth-child(3),
+    .bg-sand .pain-item:nth-child(2),
+    .bg-sand .pain-item:nth-child(3) { background: var(--paper); }
+
+    .bg-pink .chapter-card,
+    .bg-pink .chapter-card.c2,
+    .bg-pink .chapter-card.c3,
+    .bg-sand .chapter-card,
+    .bg-sand .chapter-card.c2,
+    .bg-sand .chapter-card.c3 { background: var(--paper); }
+
+    .bg-pink .sample-card,
+    .bg-pink .sample-card.s2,
+    .bg-pink .sample-card.s3,
+    .bg-sand .sample-card,
+    .bg-sand .sample-card.s2,
+    .bg-sand .sample-card.s3 { background: var(--paper); }
+
+    .bg-olive .box-card { background: var(--paper); }
+    .bg-pink .faq-item { background: var(--paper); }
+
     h2.section-title {
-      font-size: clamp(2rem, 3.6vw, 3.2rem);
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
       font-weight: 900;
       color: var(--ink);
       letter-spacing: -0.02em;
       line-height: 1.1;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
     .section-lead {
-      font-size: clamp(17px, 1.5vw, 19px);
+      font-size: clamp(16px, 1.4vw, 18px);
       color: var(--ink-mid);
-      line-height: 1.65;
+      line-height: 1.55;
       max-width: 620px;
     }
 
@@ -645,7 +679,7 @@
     }
     .pain-item {
       background: var(--past);
-      padding: 32px 32px;
+      padding: 24px 24px;
       border-radius: var(--radius);
       border-inline-start: 4px solid var(--past-deep);
       box-shadow: var(--shadow-soft);
@@ -675,7 +709,7 @@
        BRIDGE — "this is exactly what the box solves"
        ═══════════════════════════════════════════════ */
     .bridge {
-      padding: 96px 0;
+      padding: 72px 0;
       background: transparent;
       text-align: center;
       position: relative;
@@ -694,7 +728,7 @@
     }
     .bridge-head {
       max-width: 780px;
-      margin: 0 auto 56px;
+      margin: 0 auto 40px;
     }
     .bridge-head .eyebrow { color: var(--sage-deep); }
     .bridge-title {
@@ -788,7 +822,7 @@
     .journey-head {
       text-align: center;
       max-width: 720px;
-      margin: 0 auto 64px;
+      margin: 0 auto 40px;
     }
     .journey-head .section-lead { margin: 0 auto; }
 
@@ -800,7 +834,7 @@
     .chapter-card {
       background: var(--past);
       border-radius: var(--radius-lg);
-      padding: 44px 36px;
+      padding: 32px 28px;
       box-shadow: var(--shadow-card);
       position: relative;
       overflow: hidden;
@@ -867,7 +901,7 @@
        ═══════════════════════════════════════════════ */
     .samples-head {
       max-width: 720px;
-      margin: 0 auto 64px;
+      margin: 0 auto 40px;
       text-align: center;
     }
     .samples-head .section-lead { margin: 0 auto; }
@@ -879,8 +913,8 @@
     .sample-card {
       background: var(--past);
       border-radius: var(--radius-lg);
-      padding: 40px 36px;
-      min-height: 320px;
+      padding: 28px 24px;
+      min-height: 240px;
       display: flex;
       flex-direction: column;
       box-shadow: var(--shadow-card);
@@ -940,7 +974,7 @@
        BOX — the showpiece "מה במארז"
        ═══════════════════════════════════════════════ */
     .box {
-      padding: 140px 0;
+      padding: 96px 0;
       background: transparent;
       position: relative;
     }
@@ -960,7 +994,7 @@
     .box-head {
       text-align: center;
       max-width: 760px;
-      margin: 0 auto 88px;
+      margin: 0 auto 56px;
     }
     .box-head .eyebrow { color: var(--forest); }
     .box-head h2 {
@@ -987,7 +1021,7 @@
     .box-card {
       background: var(--paper);
       border-radius: var(--radius-lg);
-      padding: 48px 40px;
+      padding: 32px 28px;
       box-shadow: var(--shadow-card);
       position: relative;
       transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
@@ -1053,7 +1087,7 @@
     .testimonials-head {
       text-align: center;
       max-width: 920px;
-      margin: 0 auto 64px;
+      margin: 0 auto 40px;
     }
     .testimonials-head .section-lead { margin: 0 auto; max-width: 620px; }
     .testimonials-title {
@@ -1075,7 +1109,7 @@
     .testimonial {
       background: var(--paper);
       border-radius: var(--radius-lg);
-      padding: 40px 36px;
+      padding: 28px 24px;
       box-shadow: var(--shadow-card);
       display: flex;
       flex-direction: column;
@@ -1273,7 +1307,7 @@
        CTA
        ═══════════════════════════════════════════════ */
     .cta-section {
-      padding: 96px 0;
+      padding: 80px 0;
       background: var(--sage-deep);
       color: var(--paper);
       text-align: center;
@@ -1517,11 +1551,11 @@
       .bridge-promises { grid-template-columns: 1fr; }
     }
     @media (max-width: 720px) {
-      section.block { padding: 80px 0; }
-      .hero { padding: 64px 0 56px; }
-      .box { padding: 100px 0; }
-      .bridge { padding: 84px 0; }
-      .cta-section { padding: 84px 0; }
+      section.block { padding: 56px 0; }
+      .hero { padding: 40px 0 32px; }
+      .box { padding: 64px 0; }
+      .bridge { padding: 56px 0; }
+      .cta-section { padding: 64px 0; }
       .nir-photo-img { width: 160px; height: 160px; }
       .box-grid { grid-template-columns: 1fr; }
       .card-stack-wrap { max-width: 320px; }
@@ -1557,7 +1591,7 @@
         <span class="brand-mark" aria-hidden="true"></span>
         <span>דייט פיננסי</span>
       </a>
-      <a href="checkout.html" class="nav-cta">לחצ.י להזמנה</a>
+      <a href="https://stage.hyp.co.il/standalone.html#/public?sp_uuid=a02db515-68a4-4795-ab78-2fee3e4b5266&id=12326" target="_blank" rel="noopener" class="nav-cta">לחצ.י להזמנה</a>
     </div>
   </nav>
 
@@ -1586,7 +1620,7 @@
       </div>
 
       <div class="hero-actions">
-        <a href="checkout.html" class="btn btn-primary">
+        <a href="https://stage.hyp.co.il/standalone.html#/public?sp_uuid=a02db515-68a4-4795-ab78-2fee3e4b5266&id=12326" target="_blank" rel="noopener" class="btn btn-primary">
           אני רוצה להתחיל
           <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -1597,11 +1631,10 @@
       </div>
 
       <div class="price-line">
-        <strong>₪179</strong>
+        <strong>₪199</strong>
         <s>₪249</s>
-        <span class="pill">סה״כ פחות מ-₪200</span>
+        <span class="pill">משלוח חינם</span>
       </div>
-      <div class="shipping-note">+ ₪20 משלוח עד הבית</div>
 
       <div class="card-stack-wrap">
         <div class="card-stack" id="card-stack" role="group" aria-label="הצצה לקלפים — לחיצה תעבור לקלף הבא">
@@ -1659,7 +1692,7 @@
   <!-- ═══════════════════════════════════════════════
        PROBLEM
        ═══════════════════════════════════════════════ -->
-  <section class="block">
+  <section class="block bg-sand">
     <div class="wrap">
       <div class="problem-grid">
         <div>
@@ -1697,7 +1730,7 @@
   <!-- ═══════════════════════════════════════════════
        BRIDGE — solution promise
        ═══════════════════════════════════════════════ -->
-  <section class="bridge">
+  <section class="bridge bg-olive">
     <div class="wrap">
       <div class="bridge-head">
         <span class="eyebrow">השיחה שבחרתם בה</span>
@@ -1752,7 +1785,7 @@
   <!-- ═══════════════════════════════════════════════
        JOURNEY (3 chapters)
        ═══════════════════════════════════════════════ -->
-  <section class="block tinted">
+  <section class="block tinted bg-pink">
     <div class="wrap">
       <div class="journey-head">
         <span class="eyebrow">המסע</span>
@@ -1797,7 +1830,7 @@
   <!-- ═══════════════════════════════════════════════
        SAMPLE CARDS
        ═══════════════════════════════════════════════ -->
-  <section class="block">
+  <section class="block bg-sand">
     <div class="wrap">
       <div class="samples-head">
         <span class="eyebrow">הצצה לקלפים</span>
@@ -1841,7 +1874,7 @@
   <!-- ═══════════════════════════════════════════════
        BOX — what's inside
        ═══════════════════════════════════════════════ -->
-  <section class="box" id="whats-inside">
+  <section class="box bg-olive" id="whats-inside">
     <div class="wrap">
       <div class="box-head">
         <span class="eyebrow">מה במארז</span>
@@ -1934,7 +1967,7 @@
   <!-- ═══════════════════════════════════════════════
        TESTIMONIALS
        ═══════════════════════════════════════════════ -->
-  <section class="block">
+  <section class="block bg-pink">
     <div class="wrap">
       <div class="testimonials-head">
         <span class="eyebrow">זוגות שכבר עשו את הערב</span>
@@ -2024,7 +2057,7 @@
   <!-- ═══════════════════════════════════════════════
        NIR
        ═══════════════════════════════════════════════ -->
-  <section class="block tinted">
+  <section class="block tinted bg-sand">
     <div class="wrap">
       <div class="nir-grid">
         <div class="nir-photo">
@@ -2075,12 +2108,12 @@
 
       <div class="price-card">
         <div class="price-row">
-          <div class="price-amount">179<span class="price-currency">₪</span></div>
+          <div class="price-amount">199<span class="price-currency">₪</span></div>
           <div class="price-old">₪249</div>
         </div>
-        <div class="price-shipping">+ ₪20 דמי משלוח · סה״כ ₪199</div>
+        <div class="price-shipping">משלוח חינם עד הבית</div>
 
-        <a href="checkout.html" class="btn btn-primary">
+        <a href="https://stage.hyp.co.il/standalone.html#/public?sp_uuid=a02db515-68a4-4795-ab78-2fee3e4b5266&id=12326" target="_blank" rel="noopener" class="btn btn-primary">
           להזמין עכשיו
           <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -2098,7 +2131,7 @@
   <!-- ═══════════════════════════════════════════════
        FAQ
        ═══════════════════════════════════════════════ -->
-  <section class="block tinted">
+  <section class="block tinted bg-pink">
     <div class="narrow">
       <div class="faq-head">
         <span class="eyebrow">שאלות נפוצות</span>
@@ -2150,7 +2183,7 @@
           </summary>
           <div class="faq-answer">
             המארז כולו (קלפים, בקבוק יין, פלייליסט המודרך דרך QR בקופסה, וצידה לדרך) נשלח אליכם הביתה תוך 3-5 ימי עסקים.<br>
-            עלות משלוח: ₪20.
+            המשלוח חינם, כלול במחיר.
           </div>
         </details>
 
